@@ -8,12 +8,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <script src="js/menuhome.js" type="text/javascript"></script>
+        
         <title>JSP Page</title>
     </head>
     <body>
@@ -67,7 +68,30 @@
 	</div>
 </nav>
 <div class="main">
-<!-- Content Here -->
+<div class="container">
+        <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button>
+        
+        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+        <button type="button" class="btn btn-primary btn-lg btn3d"><span class="glyphicon glyphicon-tags"></span> Clases</button>
+        
+        <!-- Indicates a successful or positive action -->
+        <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button>
+        
+        <!-- Contextual button for informational alert messages -->
+        <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Curso</button>
+        
+        <!-- Indicates caution should be taken with this action -->
+        <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-warning-sign"></span> Warning</button>
+        
+        <!-- Indicates a dangerous or potentially negative action -->
+        <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Danger</button>
+    </div>
 </div>
+        
+        
+        
+        
+        
+        <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
 </html>
