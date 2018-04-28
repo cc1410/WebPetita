@@ -68,24 +68,32 @@
 	</div>
 </nav>
 <div class="main">
-<div class="container">
+<div class="container-fluid">
         <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button>
-        
+        <div class="col-md-2">
         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-        <button type="button" class="btn btn-primary btn-lg btn3d"><span class="glyphicon glyphicon-tags"></span> Clases</button>
+        <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
+        </div>
+        <div class="col-md-2">
         
         <!-- Indicates a successful or positive action -->
         <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button>
-        
+        </div>
+        <div class="col-md-2">
         <!-- Contextual button for informational alert messages -->
         <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Curso</button>
-        
+        </div>
+        <div class="col-md-2">
         <!-- Indicates caution should be taken with this action -->
-        <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-warning-sign"></span> Warning</button>
-        
+        <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Tareas</button>
+        </div>
+        <div class="col-md-2">
         <!-- Indicates a dangerous or potentially negative action -->
-        <button type="button" class="btn btn-danger btn-lg btn3d"><span class="glyphicon glyphicon-remove"></span> Danger</button>
+        <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
+        </div>
     </div>
+    
+    
 </div>
         
         
