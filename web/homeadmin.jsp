@@ -1,6 +1,6 @@
 <%-- 
-    Document   : home
-    Created on : 27-abr-2018, 20:08:25
+    Document   : homeadmin
+    Created on : 29-abr-2018, 21:20:46
     Author     : Juan Elberto
 --%>
 
@@ -71,19 +71,20 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="col-md-2">
-                <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button>
+                    <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
+                
                 </div>
                 <div class="col-md-2">
-                    <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
+                    <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button>
+                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asignaturas</button>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Curso</button>
+                    <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Tareas</button>
+                    <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button>
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
@@ -136,3 +137,4 @@
         <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
 </html>
+

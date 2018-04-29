@@ -1,15 +1,16 @@
 <%-- 
-    Document   : home
-    Created on : 27-abr-2018, 20:08:25
+    Document   : crearUsuario
+    Created on : 29-abr-2018, 21:41:52
     Author     : Juan Elberto
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
-        <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
+        <link href="css/buttonshomeadmin.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -71,60 +72,101 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="col-md-2">
-                <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button>
+                    <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button>
                 </div>
                 <div class="col-md-2">
-                    <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
+                    <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button>
+                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asignaturas</button>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Curso</button>
+                    <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Tareas</button>
+                    <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button>
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
                 </div>
             </div>
-            
-                <div class="col-md-12">
-                    <form class="form-horizontal">
-                        <fieldset>
 
-                            <!-- Form Name -->
-                            <legend>Lista de Asistencia</legend>
+            <div class="col-md-12">
+                <form class="form-horizontal">
+                    <fieldset>
 
-                            <!-- Multiple Radios (inline) -->
-                            <div class="form-group">
-                                <label class="col-md-6 " for="radios">Alumno1 Apellidos </label>
-                                <div class="col-md-6"> 
-                                    <label class="radio-inline" for="radios-0">
-                                        <input type="radio" name="radios" id="radios-0" value="asistir" checked="checked">
-                                        asistir
-                                    </label> 
-                                    <label class="radio-inline" for="radios-1">
-                                        <input type="radio" name="radios" id="radios-1" value="retraso">
-                                        retraso
-                                    </label> 
-                                    <label class="radio-inline" for="radios-2">
-                                        <input type="radio" name="radios" id="radios-2" value="ausencia">
-                                        ausencia
-                                    </label> 
-                                    <label class="radio-inline" for="radios-3">
-                                        <input type="radio" name="radios" id="radios-3" value="justificada">
-                                        justificada
+                        <!-- Form Name -->
+                        <legend>Form Name</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="nombre">Nombre</label>  
+                            <div class="col-md-4">
+                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="apellidos">Apellidos</label>  
+                            <div class="col-md-4">
+                                <input id="apellidos" name="apellidos" type="text" placeholder="apellidos" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="mail">Email</label>  
+                            <div class="col-md-4">
+                                <input id="mail" name="mail" type="text" placeholder="correo" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="password">Password</label>  
+                            <div class="col-md-4">
+                                <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md">
+
+                            </div>
+                        </div>
+
+                        <!-- Multiple Radios -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="tipo">Tipo Usuario</label>
+                            <div class="col-md-4">
+                                <div class="radio">
+                                    <label for="tipo-0">
+                                        <input type="radio" name="tipo" id="tipo-0" value="0" checked="checked">
+                                        Profesor
+                                    </label>
+                                </div>
+                                <div class="radio">
+                                    <label for="tipo-1">
+                                        <input type="radio" name="tipo" id="tipo-1" value="1">
+                                        Alumno
                                     </label>
                                 </div>
                             </div>
+                        </div>
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="button1id"></label>
+                            <div class="col-md-8">
+                                <button id="button1id" name="button1id" class="btn btn-primary">Crear</button>
+                                <button id="Cancelar" name="Cancelar" class="btn btn-danger">Cancelar</button>
+                            </div>
+                        </div>  
 
-                        </fieldset>
-                    </form>
+                    </fieldset>
+                </form>
 
-                </div>
+
             </div>
+        </div>
 
 
 
@@ -136,3 +178,5 @@
         <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
 </html>
+
+
