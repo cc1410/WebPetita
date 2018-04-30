@@ -93,7 +93,14 @@
             <div class="container">
             <div id="imghome" class="col-md-12">
                 <img src="img/home.PNG" class="col-md-12">
+                </div>
             </div>
+            <div class="container">
+                <div class="col-md-12">
+                <a href="http://ec2-54-209-220-253.compute-1.amazonaws.com/sites/default/files/skiptu-template-0.3.zip" class="btn btn-lg " ><span class="glyphicon glyphicon-cloud-download"></span> Descargar PepitaSchool para Windows</a>
+               <a href="http://ec2-54-209-220-253.compute-1.amazonaws.com/sites/default/files/skiptu-template-0.3.zip" class="btn btn-lg " ><span class="glyphicon glyphicon-cloud-download"></span> Descargar PepitaSchool para Linux</a>
+                <a href="http://ec2-54-209-220-253.compute-1.amazonaws.com/sites/default/files/skiptu-template-0.3.zip" class="btn btn-lg " ><span class="glyphicon glyphicon-cloud-download"></span> Descargar PepitaSchool para MacOs</a>
+                </div>
             </div>
                <!--<div class="col-md-12">
                     <form class="form-horizontal">
