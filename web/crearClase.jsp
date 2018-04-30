@@ -1,6 +1,6 @@
 <%-- 
-    Document   : homeadmin
-    Created on : 29-abr-2018, 21:20:46
+    Document   : crearClase
+    Created on : 30-abr-2018, 12:36:39
     Author     : Juan Elberto
 --%>
 
@@ -9,7 +9,7 @@
 <html>
     <head>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
-        <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
+        <link href="css/buttonsCrearClaseAdmin_1.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -71,11 +71,10 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="col-md-2">
-                    <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
-                
+                    <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button>
                 </div>
                 <div class="col-md-2">
-                    <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
+                    <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asignaturas</button>
@@ -90,51 +89,4 @@
                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
                 </div>
             </div>
-            
-               <!--<div class="col-md-12">
-                    <form class="form-horizontal">
-                        <fieldset>
-
-                           
-                            <legend>Lista de Asistencia</legend>
-
-                           
-                            <div class="form-group">
-                                <label class="col-md-6 " for="radios">Alumno1 Apellidos </label>
-                                <div class="col-md-6"> 
-                                    <label class="radio-inline" for="radios-0">
-                                        <input type="radio" name="radios" id="radios-0" value="asistir" checked="checked">
-                                        asistir
-                                    </label> 
-                                    <label class="radio-inline" for="radios-1">
-                                        <input type="radio" name="radios" id="radios-1" value="retraso">
-                                        retraso
-                                    </label> 
-                                    <label class="radio-inline" for="radios-2">
-                                        <input type="radio" name="radios" id="radios-2" value="ausencia">
-                                        ausencia
-                                    </label> 
-                                    <label class="radio-inline" for="radios-3">
-                                        <input type="radio" name="radios" id="radios-3" value="justificada">
-                                        justificada
-                                    </label>
-                                </div>
-                            </div>
-
-                        </fieldset>
-                    </form>
-
-                </div>
-            </div>-->
-
-
-
-
-
-
-
-
-        <script src="js/menuhome.js" type="text/javascript"></script>
-    </body>
 </html>
-
