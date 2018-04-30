@@ -74,7 +74,7 @@
                 <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button>
                 </div>
                 <div class="col-md-2">
-                    <a href="index.html"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
+                    <a href=""><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button>
