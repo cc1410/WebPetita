@@ -96,7 +96,7 @@
                     <fieldset>
 
                         <!-- Form Name -->
-                        <legend>Form Name</legend>
+                        <legend>Crear un nuevo Usuario</legend>
 
                         <!-- Text input-->
                         <div class="form-group">

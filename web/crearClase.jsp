@@ -89,4 +89,54 @@
                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
                 </div>
             </div>
+
+            <div class="container">
+                <form class="form-horizontal">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Crear una Clase</legend>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="nombreClase">Titulo</label>  
+                            <div class="col-md-4">
+                                <input id="nombreClase" name="nombreClase" type="text" placeholder="nombre de la clase" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="nombreCurso">Curso</label>  
+                            <div class="col-md-4">
+                                <input id="nombreCurso" name="nombreCurso" type="text" placeholder="nombre del curso al que pertenece" class="form-control input-md" required="">
+
+                            </div>
+                        </div>
+
+                        <!-- Select Basic -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="idProfesor">Tutor</label>
+                            <div class="col-md-4">
+                                <select id="idProfesor" name="idProfesor" class="form-control">
+                                    <option value="idProfesor1">Profesor1</option>
+                                    <option value="idprofesor2">profesor2</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="button1id"></label>
+                            <div class="col-md-8">
+                                <button id="button1id" name="button1id" class="btn btn-success">Crear</button>
+                                <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+
+            </div>
 </html>
