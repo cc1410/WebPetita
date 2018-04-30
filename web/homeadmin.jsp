@@ -78,7 +78,7 @@
                     <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asignaturas</button>
+                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button>
                 </div>
                 <div class="col-md-2">
                     <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button>
@@ -90,7 +90,11 @@
                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
                 </div>
             </div>
-            
+            <div class="container">
+            <div id="imghome" class="col-md-12">
+                <img src="img/home.PNG" class="col-md-12">
+            </div>
+            </div>
                <!--<div class="col-md-12">
                     <form class="form-horizontal">
                         <fieldset>
