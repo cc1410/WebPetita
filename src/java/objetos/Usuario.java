@@ -11,15 +11,13 @@ package objetos;
  */
 public class Usuario {
     
-    private int idusuario;
     private String name;
     private String lastname;
     private String mail;
     private String password;
     private int type;
 
-    public Usuario(int idusuario, String name, String lastname, String mail, String password, int type) {
-        this.idusuario = idusuario;
+    public Usuario( String name, String lastname, String mail, String password, int type) {
         this.name = name;
         this.lastname = lastname;
         this.mail = mail;
@@ -27,16 +25,19 @@ public class Usuario {
         this.type = type;
     }
 
+    public Usuario(String mail, String password) {
+        this.mail = mail;
+        this.password = password;
+    }
+
+    
+   
+
+    
+    
     public Usuario() {
     }
     
-    
-    
-
-    public void setIdusuario(int idusuario) {
-        this.idusuario = idusuario;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -57,11 +58,6 @@ public class Usuario {
         this.type = type;
     }
 
-    
-    
-    public int getIdusuario() {
-        return idusuario;
-    }
 
     public String getName() {
         return name;

@@ -5,52 +5,46 @@
  */
 package Servlet;
 
-import exepciones.Exepciones;
 import java.io.IOException;
-import java.sql.SQLException;
-import javax.ejb.EJB;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import jdbcPepitaWeb.Conexion;
 import objetos.Usuario;
 
 /**
  *
  * @author Juan Elberto
  */
-public class Login extends HttpServlet {
+public class Registro extends HttpServlet {
 
-
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        if ("button1id".equals(request.getParameter("boton"))) {//si clicamos en alta de usuario 
+            //recogemos los datos del formulario 
 
-        if ("Login".equals(request.getParameter("login"))) {//si clicamos en login
-            //recogemos los datos del login
-
+            String name = request.getParameter("nombre");
+            String lastname = request.getParameter("apellidos");
             String mail = request.getParameter("mail");
             String password = request.getParameter("password");
-            Conexion myDao = new Conexion();
-            try {
-                Usuario user = myDao.loginUser(mail, password);
-                // Guardas en la variable de sesión el user o el mail
-                response.sendRedirect(request.getContextPath() + "/homeadmin.jsp");
-            } catch (Exepciones | SQLException ex) {
-                request.setAttribute("status", ex.getMessage());
-                request.getRequestDispatcher("index.jsp").forward(request, response);
-            }
+            int tipo = Integer.getInteger( request.getParameter("tipo"));
 
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            
+            
+            //creamos un Empleado con los datos recogido del fomulario
+            Usuario a = new Usuario(name, lastname, mail, password, tipo);
+            
+            
+            try {
+
+                
+                request.setAttribute("status", "Empleado dado de alta");
+            } catch (Exception ex) {
+                request.setAttribute("status", "No se ha podido dar de alta el usuario");
+            }
+            request.getRequestDispatcher("crearUsuario.jsp").forward(request, response);
         }
     }
 
