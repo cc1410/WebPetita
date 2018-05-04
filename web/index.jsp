@@ -1,3 +1,10 @@
+<%-- 
+    Document   : index
+    Created on : 04-may-2018, 18:33:36
+    Author     : Juan Elberto
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.

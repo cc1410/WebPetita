@@ -77,7 +77,7 @@
             </div>
 
             <div class="col-md-12">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST">
                     <fieldset>
 
                         <!-- Form Name -->
@@ -105,14 +105,14 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="mail">Email</label>  
                             <div class="col-md-4">
-                                <input id="mail" name="mail" type="text" placeholder="correo" class="form-control input-md">
+                                <input id="mail" name="mail" type="text" placeholder="correo" class="form-control input-md" required="">
 
                             </div>
                         </div>
 
                         <!-- Text input-->
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="password">Password</label>  
+                            <label class="col-md-4 control-label" for="password" required="">Password</label>  
                             <div class="col-md-4">
                                 <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md">
 
