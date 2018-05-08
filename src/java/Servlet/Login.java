@@ -23,6 +23,7 @@ import objetos.Usuario;
 public class Login extends HttpServlet {
 
 
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -34,23 +35,23 @@ public class Login extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        Conexion conexion = new Conexion();
         if ("Login".equals(request.getParameter("login"))) {//si clicamos en login
             //recogemos los datos del login
 
             String mail = request.getParameter("mail");
             String password = request.getParameter("password");
-            Conexion myDao = new Conexion();
             try {
-                Usuario user = myDao.loginUser(mail, password);
+                Usuario user = conexion.loginUser(mail, password);
                 // Guardas en la variable de sesión el user o el mail
+                System.out.println(user.getName());
+                request.getSession(true).setAttribute("login", user);
                 response.sendRedirect(request.getContextPath() + "/homeadmin.jsp");
+                
             } catch (Exepciones | SQLException ex) {
                 request.setAttribute("status", ex.getMessage());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
-
-            request.getRequestDispatcher("index.jsp").forward(request, response);
         }
     }
 

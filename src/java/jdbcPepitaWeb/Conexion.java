@@ -12,14 +12,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import javax.ejb.Stateless;
 import objetos.Usuario;
 
 /**
  *
  * @author Juan Elberto
  */
-@Stateless
 public class Conexion {
 
     //*********************Conexion a la BBDD ******************
@@ -84,25 +82,21 @@ public class Conexion {
         if (!existeUsuario(a)) {
             throw new Exepciones("No existe el usuario");
         }
-
-        Usuario b = new Usuario();
-        if (!b.getPassword().equals(password)) {
-            throw new Exepciones("Password incorrecto");
-        }
-        String select = "select * from usuario where mail='" + mail + "'";
+        String select = "select * from usuario where mail='" + mail + "' and password='"+password+"'";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(select);
-
         if (rs.next()) {
-            b.setName(rs.getString("name"));
-            b.setLastname(rs.getString("lastname"));
-            b.setMail(rs.getString("mail"));
-            b.setPassword(rs.getString("password"));
-            b.setType(rs.getInt("type"));
+            a.setName(rs.getString("name"));
+            a.setLastname(rs.getString("lastname"));
+            a.setMail(rs.getString("mail"));
+            a.setPassword(rs.getString("password"));
+            a.setType(rs.getInt("type"));
+        } else {
+            throw new Exepciones("Password incorrecto");
         }
         rs.close();
         st.close();
         desconectar();
-        return b;
+        return a;
     }
 }

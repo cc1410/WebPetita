@@ -4,6 +4,12 @@
     Author     : Juan Elberto
 --%>
 
+<%@page import="objetos.Usuario"%>
+<%
+            Usuario logeado = (Usuario) session.getAttribute("login");
+
+
+        %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
