@@ -5,7 +5,7 @@
  */
 package Servlet;
 
-import exepciones.Exepciones;
+import excepciones.Excepciones;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.ejb.EJB;
@@ -48,7 +48,7 @@ public class Login extends HttpServlet {
                 request.getSession(true).setAttribute("login", user);
                 response.sendRedirect(request.getContextPath() + "/homeadmin.jsp");
                 
-            } catch (Exepciones | SQLException ex) {
+            } catch (Excepciones | SQLException ex) {
                 request.setAttribute("status", ex.getMessage());
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }

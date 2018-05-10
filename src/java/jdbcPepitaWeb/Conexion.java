@@ -5,7 +5,7 @@
  */
 package jdbcPepitaWeb;
 
-import exepciones.Exepciones;
+import excepciones.Excepciones;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -43,11 +43,11 @@ public class Conexion {
      *
      * @param c
      * @throws SQLException
-     * @throws Exepciones
+     * @throws Excepciones
      */
-    public void insertarUsuario(Usuario c) throws SQLException, Exepciones {
+    public void insertarUsuario(Usuario c) throws SQLException, Excepciones {
         if (existeUsuario(c)) {
-            throw new Exepciones("Ya existe el Usuario");
+            throw new Excepciones("Ya existe el Usuario");
         }
         String insert = "insert into usuario values (?, ?, ?, ?, ?);";
         PreparedStatement usuario = conexion.prepareStatement(insert);
@@ -75,12 +75,12 @@ public class Conexion {
         return existe;
     }
 
-    public Usuario loginUser(String mail, String password) throws Exepciones, SQLException {
+    public Usuario loginUser(String mail, String password) throws Excepciones, SQLException {
         
         conectar();
         Usuario a = new Usuario(mail, password);
         if (!existeUsuario(a)) {
-            throw new Exepciones("No existe el usuario");
+            throw new Excepciones("No existe el usuario");
         }
         String select = "select * from usuario where mail='" + mail + "' and password='"+password+"'";
         Statement st = conexion.createStatement();
@@ -92,7 +92,7 @@ public class Conexion {
             a.setPassword(rs.getString("password"));
             a.setType(rs.getInt("type"));
         } else {
-            throw new Exepciones("Password incorrecto");
+            throw new Excepciones("Password incorrecto");
         }
         rs.close();
         st.close();

@@ -3,15 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package exepciones;
+package excepciones;
 
 /**
  *
  * @author Juan Elberto
  */
-public class Exepciones extends Exception {
+public class Excepciones extends Exception {
 
-    public Exepciones(String message) {
+    public Excepciones(String message) {
         super(message);
     }
     
