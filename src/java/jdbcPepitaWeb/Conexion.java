@@ -24,7 +24,7 @@ public class Conexion {
     Connection conexion;
 
     private void conectar() throws SQLException {
-        String url = "jdbc:mysql://localhost:3306/webpepitta";
+        String url = "jdbc:mysql://localhost:3306/webpepita";
         String user = "root";
         String pass = "";
         conexion = DriverManager.getConnection(url, user, pass);

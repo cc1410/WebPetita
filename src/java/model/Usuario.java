@@ -1,7 +1,6 @@
 package model;
 
 public class Usuario {
-	private String username;
 	private String password;
 	private String email;
 	private String nombre;
@@ -25,12 +24,6 @@ public class Usuario {
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getPassword() {
 		return password;
