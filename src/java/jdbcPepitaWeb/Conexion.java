@@ -48,10 +48,10 @@ public class Conexion {
      * @throws Excepciones
      */
     public void insertarProfesor(Profesor p) throws SQLException, Excepciones {
-        if (existeProfesor(p)) {
+        if (existeUsuario(p)) {
             throw new Excepciones("Ya existe el Usuario");
         }
-        String insert = "insert into usuario values (?, ?, ?, ?, ?,?);";
+        String insert = "insert into users values (?, ?, ?, ?, ?,?);";
         PreparedStatement usuario = conexion.prepareStatement(insert);
         usuario.setString(1, p.getNombre());
         usuario.setString(2, p.getApellido());
@@ -65,7 +65,7 @@ public class Conexion {
     }
 
     //******Existe Usuario ?? ***********
-    private boolean existeProfesor(Profesor p) throws SQLException {
+    private boolean existeUsuario(Usuario p) throws SQLException {
         String select = "select * from users where mail='" + p.getEmail()+ "'";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(select);
@@ -79,12 +79,11 @@ public class Conexion {
     }
 
     public Usuario loginUser(String mail, String password) throws Excepciones, SQLException {
-        
         conectar();
-        Profesor aux = new Profesor();
+        Usuario aux = new Usuario();
         aux.setEmail(mail);
         aux.setPassword(password);
-        if (!existeProfesor(aux)) {
+        if (!existeUsuario(aux)) {
             throw new Excepciones("No existe el usuario");
         }
         String select = "select * from users where mail='" + mail + "' and password='"+password+"'";

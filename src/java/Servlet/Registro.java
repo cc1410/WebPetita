@@ -6,12 +6,11 @@
 package Servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import objetos.Usuario;
+import model.Usuario;
 
 /**
  *
@@ -28,13 +27,14 @@ public class Registro extends HttpServlet {
             String name = request.getParameter("nombre");
             String lastname = request.getParameter("apellidos");
             String mail = request.getParameter("mail");
+            String dni = request.getParameter("dni");
             String password = request.getParameter("password");
             int tipo = Integer.getInteger( request.getParameter("tipo"));
 
             
             
             //creamos un Empleado con los datos recogido del fomulario
-            Usuario a = new Usuario(name, lastname, mail, password, tipo);
+            Usuario a = new Usuario(name, lastname, password, dni, mail, tipo);
             
             
             try {

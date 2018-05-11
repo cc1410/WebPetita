@@ -4,11 +4,11 @@
     Author     : Juan Elberto
 --%>
 
-<%@page import="objetos.Usuario"%>
+<%@page import="model.Usuario"%>
 <%
             Usuario logeado = (Usuario) session.getAttribute("login");
             
-     String nom = logeado.getName();
+     String nom = logeado.getNombre();
 
 
         %>

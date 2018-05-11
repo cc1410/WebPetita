@@ -120,20 +120,25 @@
 
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="dni" required="">DNI</label>  
+                            <div class="col-md-4">
+                                <input id="dni" name="dni" type="text" placeholder="DNI" class="form-control input-md">
+                            </div>
+                        </div>
                         <!-- Multiple Radios -->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="tipo">Tipo Usuario</label>
                             <div class="col-md-4">
                                 <div class="radio">
                                     <label for="tipo-0">
-                                        <input type="radio" name="tipo" id="tipo-0" value="0" checked="checked">
+                                        <input type="radio" name="tipo" id="tipo-0" value="1" checked="checked">
                                         Profesor
                                     </label>
                                 </div>
                                 <div class="radio">
                                     <label for="tipo-1">
-                                        <input type="radio" name="tipo" id="tipo-1" value="1">
+                                        <input type="radio" name="tipo" id="tipo-1" value="2">
                                         Alumno
                                     </label>
                                 </div>
