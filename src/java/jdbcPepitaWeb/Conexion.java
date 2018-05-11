@@ -12,7 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import objetos.Usuario;
+import model.Profesor;
+import model.Usuario;
+
 
 /**
  *
@@ -41,29 +43,30 @@ public class Conexion {
     /**
      * metodo para registrar un usuario
      *
-     * @param c
+     * @param p
      * @throws SQLException
      * @throws Excepciones
      */
-    public void insertarUsuario(Usuario c) throws SQLException, Excepciones {
-        if (existeUsuario(c)) {
+    public void insertarProfesor(Profesor p) throws SQLException, Excepciones {
+        if (existeProfesor(p)) {
             throw new Excepciones("Ya existe el Usuario");
         }
-        String insert = "insert into usuario values (?, ?, ?, ?, ?);";
+        String insert = "insert into usuario values (?, ?, ?, ?, ?,?);";
         PreparedStatement usuario = conexion.prepareStatement(insert);
-        usuario.setString(3, c.getName());
-        usuario.setString(2, c.getLastname());
-        usuario.setString(1, c.getMail());
-        usuario.setString(4, c.getPassword());
-        usuario.setInt(5, c.getType());
+        usuario.setString(1, p.getNombre());
+        usuario.setString(2, p.getApellido());
+        usuario.setString(3, p.getDni());
+        usuario.setString(4, p.getEmail());
+        usuario.setString(5, p.getPassword());
+        usuario.setInt(6, 1);
 
         usuario.executeUpdate();
         usuario.close();
     }
 
     //******Existe Usuario ?? ***********
-    private boolean existeUsuario(Usuario c) throws SQLException {
-        String select = "select * from usuario where mail='" + c.getMail()+ "'";
+    private boolean existeProfesor(Profesor p) throws SQLException {
+        String select = "select * from users where mail='" + p.getEmail()+ "'";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(select);
         boolean existe = false;
@@ -78,25 +81,26 @@ public class Conexion {
     public Usuario loginUser(String mail, String password) throws Excepciones, SQLException {
         
         conectar();
-        Usuario a = new Usuario(mail, password);
-        if (!existeUsuario(a)) {
+        Profesor aux = new Profesor();
+        aux.setEmail(mail);
+        aux.setPassword(password);
+        if (!existeProfesor(aux)) {
             throw new Excepciones("No existe el usuario");
         }
-        String select = "select * from usuario where mail='" + mail + "' and password='"+password+"'";
+        String select = "select * from users where mail='" + mail + "' and password='"+password+"'";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(select);
         if (rs.next()) {
-            a.setName(rs.getString("name"));
-            a.setLastname(rs.getString("lastname"));
-            a.setMail(rs.getString("mail"));
-            a.setPassword(rs.getString("password"));
-            a.setType(rs.getInt("type"));
+            aux.setNombre(rs.getString("name"));
+            aux.setApellido(rs.getString("lastname"));
+            aux.setEmail(rs.getString("mail"));
+            aux.setPassword(rs.getString("password"));
         } else {
             throw new Excepciones("Password incorrecto");
         }
         rs.close();
         st.close();
         desconectar();
-        return a;
+        return aux;
     }
 }

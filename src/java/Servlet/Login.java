@@ -8,13 +8,12 @@ package Servlet;
 import excepciones.Excepciones;
 import java.io.IOException;
 import java.sql.SQLException;
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jdbcPepitaWeb.Conexion;
-import objetos.Usuario;
+import model.Usuario;
 
 /**
  *
@@ -44,7 +43,7 @@ public class Login extends HttpServlet {
             try {
                 Usuario user = conexion.loginUser(mail, password);
                 // Guardas en la variable de sesión el user o el mail
-                System.out.println(user.getName());
+                System.out.println(user.getNombre());
                 request.getSession(true).setAttribute("login", user);
                 response.sendRedirect(request.getContextPath() + "/homeadmin.jsp");
                 
