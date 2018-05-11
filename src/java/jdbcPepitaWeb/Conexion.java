@@ -15,7 +15,6 @@ import java.sql.Statement;
 import model.Profesor;
 import model.Usuario;
 
-
 /**
  *
  * @author Juan Elberto
@@ -66,7 +65,7 @@ public class Conexion {
 
     //******Existe Usuario ?? ***********
     private boolean existeUsuario(Usuario p) throws SQLException {
-        String select = "select * from users where mail='" + p.getEmail()+ "'";
+        String select = "select * from users where mail='" + p.getEmail() + "'";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(select);
         boolean existe = false;
@@ -86,7 +85,7 @@ public class Conexion {
         if (!existeUsuario(aux)) {
             throw new Excepciones("No existe el usuario");
         }
-        String select = "select * from users where mail='" + mail + "' and password='"+password+"'";
+        String select = "select * from users where mail='" + mail + "' and password='" + password + "'";
         Statement st = conexion.createStatement();
         ResultSet rs = st.executeQuery(select);
         if (rs.next()) {
