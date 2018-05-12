@@ -25,7 +25,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
         <title>JSP Page</title>
     </head>
     <body>
@@ -76,16 +76,17 @@
                     </ul>
                     <div id="myTabContent" class="tab-content" style="padding-top: 2%">
                         <div class="tab-pane active in" id="home">
-                            <form id="tab">
+                            <form id="tab" method="POST" action="Update">
                                 <label style="padding-bottom: 2%;">Nombre</label>
-                                <input type="text" value="<%= logeado.getNombre() %>" class="input-xlarge"><br>
+                                <input type="text"  value="<%= logeado.getNombre()%>" class="input-xlarge" name="nombre"><br>
                                 <label style="padding-bottom: 2%;">Apellido</label>
-                                <input type="text" value="<%= logeado.getApellido() %>" class="input-xlarge"><br>
+                                <input type="text" value="<%= logeado.getApellido()%>" class="input-xlarge" name="apellido"><br>
                                 <label style="padding-bottom: 2%;">DNI</label>
-                                <input type="text" value="<%= logeado.getDni()%>" class="input-xlarge"><br>
+                                <input type="text" value="<%= logeado.getDni()%>" class="input-xlarge" name="dni"><br>
                                 <label style="padding-bottom: 2%;">Email</label>
-                                <input type="text" placeholder="<%= logeado.getEmail() %>" class="input-xlarge"><br>
-                                
+                                <input type="text" placeholder="<%= logeado.getEmail()%>" class="input-xlarge"><br>
+                                <input type="hidden" value="<%= logeado.getEmail()%>" class="input-xlarge" name="email"><br>
+                                <input type="hidden" value="<%= logeado.getTipo() %>" name="tipo" >
                                 <div>
                                     <input type="submit" name="cambiarPerfil" value="Cambiar"   class="btn btn-primary">
                                 </div>
@@ -94,7 +95,7 @@
                         <div class="tab-pane fade" id="profile">
                             <form id="tab2">
                                 <label>New Password</label>
-                                <input type="password" class="input-xlarge" value="<%= logeado.getPassword() %>">
+                                <input type="password" class="input-xlarge" value="<%= logeado.getPassword()%>">
                                 <div>
                                     <input type="submit" name="cambiarPassword" value="Cmabiar" class="btn btn-primary">
                                 </div>
@@ -103,6 +104,17 @@
                     </div>
                 </div> 
             </div>
+            <%
+                String status = (String) request.getAttribute("cambioPerfil");
+                if (status != null) {
+            %>
+            <div class="alert alert-danger">
+                <strong><%=  status%></strong> 
+            </div>
+            <%
+                }
+            %>
+        </div>
 
 
     </body>

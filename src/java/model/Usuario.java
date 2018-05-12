@@ -22,6 +22,16 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public Usuario(String nombre, String apellido, String dni, String email, int tipo) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.email = email;
+        this.tipo = tipo;
+    }
+    
+    
+
     public String getDni() {
         return dni;
     }

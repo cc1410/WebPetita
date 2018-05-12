@@ -98,6 +98,7 @@ public class Conexion {
             aux.setNombre(rs.getString("name"));
             aux.setApellido(rs.getString("lastname"));
             aux.setEmail(rs.getString("mail"));
+            aux.setDni(rs.getString("dni"));
             aux.setPassword(rs.getString("password"));
         } else {
             throw new Excepciones("Password incorrecto");
@@ -138,8 +139,7 @@ public class Conexion {
         st.close();
         return existe;
     }
-    
-    
+
     //insertar clase
     public void insertarClase(Clase a) throws SQLException, Excepciones {
         conectar();
@@ -148,13 +148,11 @@ public class Conexion {
         }
 
         String insert = "insert into clase values (?, ?, ?);";
-       
+
         PreparedStatement clase = conexion.prepareStatement(insert);
         clase.setString(1, a.getNombre());
         clase.setString(2, null);
         clase.setString(3, null);
-        
-        
 
         clase.executeUpdate();
         clase.close();
@@ -174,7 +172,7 @@ public class Conexion {
         st.close();
         return existe;
     }
-    
+
     //insertar asignatura
     public void insertarAsignatura(Asignatura a) throws SQLException, Excepciones {
         conectar();
@@ -183,13 +181,10 @@ public class Conexion {
         }
 
         String insert = "insert into asignatura values (?, ?);";
-       
+
         PreparedStatement clase = conexion.prepareStatement(insert);
         clase.setString(1, a.getNombre());
         clase.setString(2, null);
-       
-        
-        
 
         clase.executeUpdate();
         clase.close();
@@ -209,7 +204,23 @@ public class Conexion {
         st.close();
         return existe;
     }
-    
-     
+
+    public void modificarPerfil(Usuario a) throws SQLException, Excepciones {
+        conectar();
+        if (!existeUsuario(a)) {
+            throw new Excepciones("No existe la Usuario");
+        }
+
+        String insert = "update users set name=?, lastname=?, dni=? where mail=?;";
+        PreparedStatement aux = conexion.prepareStatement(insert);
+        aux.setString(1, a.getNombre());
+        aux.setString(2, a.getApellido());
+        aux.setString(3, a.getDni());
+        aux.setString(4, a.getEmail());
+
+        aux.executeUpdate();
+        aux.close();
+        desconectar();
+    }
 
 }
