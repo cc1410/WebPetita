@@ -43,8 +43,8 @@ public class Registro extends HttpServlet {
             //creamos un Empleado con los datos recogido del fomulario
             Usuario a = new Usuario(name, lastname, password, dni, mail, tipo);
             try {
-                if(a.getTipo() == 1){
-                    conexion.insertarProfesor(a);
+                if(a.getTipo() == 1 || a.getTipo() == 2){
+                    conexion.insertarUsuario(a);
                 }
                 request.setAttribute("status", "Usuario dado de alta");
             } catch (Excepciones ex) {

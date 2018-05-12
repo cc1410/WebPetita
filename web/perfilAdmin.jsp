@@ -87,7 +87,7 @@
                                 <input type="text" placeholder="<%= logeado.getEmail() %>" class="input-xlarge"><br>
                                 
                                 <div>
-                                    <button class="btn btn-primary">Update</button>
+                                    <input type="submit" name="cambiarPerfil" value="Cambiar"   class="btn btn-primary">
                                 </div>
                             </form>
                         </div>
@@ -96,7 +96,7 @@
                                 <label>New Password</label>
                                 <input type="password" class="input-xlarge" value="<%= logeado.getPassword() %>">
                                 <div>
-                                    <button class="btn btn-primary">Update</button>
+                                    <input type="submit" name="cambiarPassword" value="Cmabiar" class="btn btn-primary">
                                 </div>
                             </form>
                         </div>

@@ -49,7 +49,7 @@ public class Conexion {
      * @throws SQLException
      * @throws Excepciones
      */
-    public void insertarProfesor(Usuario u) throws SQLException, Excepciones {
+    public void insertarUsuario(Usuario u) throws SQLException, Excepciones {
         conectar();
         if (existeUsuario(u)) {
             throw new Excepciones("Ya existe el Usuario");
@@ -61,7 +61,7 @@ public class Conexion {
         usuario.setString(3, u.getPassword());
         usuario.setString(4, u.getDni());
         usuario.setString(5, u.getEmail());
-        usuario.setInt(6, 1);
+        usuario.setInt(6, u.getTipo());
 
         usuario.executeUpdate();
         usuario.close();
