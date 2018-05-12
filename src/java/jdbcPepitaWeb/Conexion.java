@@ -42,21 +42,21 @@ public class Conexion {
     /**
      * metodo para registrar un usuario
      *
-     * @param p
+     * @param u
      * @throws SQLException
      * @throws Excepciones
      */
-    public void insertarProfesor(Profesor p) throws SQLException, Excepciones {
-        if (existeUsuario(p)) {
+    public void insertarProfesor(Usuario u) throws SQLException, Excepciones {
+        if (existeUsuario(u)) {
             throw new Excepciones("Ya existe el Usuario");
         }
         String insert = "insert into users values (?, ?, ?, ?, ?,?);";
         PreparedStatement usuario = conexion.prepareStatement(insert);
-        usuario.setString(1, p.getNombre());
-        usuario.setString(2, p.getApellido());
-        usuario.setString(3, p.getDni());
-        usuario.setString(4, p.getEmail());
-        usuario.setString(5, p.getPassword());
+        usuario.setString(1, u.getNombre());
+        usuario.setString(2, u.getApellido());
+        usuario.setString(3, u.getDni());
+        usuario.setString(4, u.getEmail());
+        usuario.setString(5, u.getPassword());
         usuario.setInt(6, 1);
 
         usuario.executeUpdate();

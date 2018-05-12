@@ -16,8 +16,8 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-        
+
+
 
         <title>JSP Page</title>
     </head>
@@ -51,7 +51,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -79,7 +79,7 @@
             </div>
 
             <div class="col-md-12">
-                <form class="form-horizontal" method="POST">
+                <form class="form-horizontal" method="POST" action="Registro">
                     <fieldset>
 
                         <!-- Form Name -->
@@ -148,7 +148,7 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="button1id"></label>
                             <div class="col-md-8">
-                                <button id="button1id" name="button1id" class="btn btn-default">Crear</button>
+                                <input type="submit" id="button1id" name="crear" class="btn btn-default" value="Crear">
                                 <button id="Cancelar" name="Cancelar" class="btn btn-danger">Cancelar</button>
                             </div>
                         </div>  
@@ -159,14 +159,17 @@
 
             </div>
         </div>
+        <%
+            String status = (String) request.getAttribute("status");
+            if (status != null) {
+        %>
+        <div class="alert alert-danger">
 
-
-
-
-
-
-
-
+            <strong><%=status%></strong> 
+        </div>
+        <%
+            }
+        %>
         <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
 </html>

@@ -10,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import jdbcPepitaWeb.Conexion;
 import model.Usuario;
 
 /**
@@ -21,30 +22,27 @@ public class Registro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        if ("button1id".equals(request.getParameter("boton"))) {//si clicamos en alta de usuario 
+         Conexion conexion = new Conexion();
+        if ("Crear".equals(request.getParameter("crear"))) {//si clicamos en alta de usuario 
             //recogemos los datos del formulario 
-
             String name = request.getParameter("nombre");
             String lastname = request.getParameter("apellidos");
             String mail = request.getParameter("mail");
             String dni = request.getParameter("dni");
             String password = request.getParameter("password");
-            int tipo = Integer.getInteger( request.getParameter("tipo"));
+            int tipo = Integer.parseInt(request.getParameter("tipo"));
 
-            
-            
             //creamos un Empleado con los datos recogido del fomulario
             Usuario a = new Usuario(name, lastname, password, dni, mail, tipo);
-            
-            
             try {
-
-                
-                request.setAttribute("status", "Empleado dado de alta");
+                if(a.getTipo() == 1){
+                    conexion.insertarProfesor(a);
+                }
+                request.setAttribute("status", "Usuario dado de alta");
             } catch (Exception ex) {
-                request.setAttribute("status", "No se ha podido dar de alta el usuario");
+                request.setAttribute("status", ex);
             }
-            request.getRequestDispatcher("crearUsuario.jsp").forward(request, response);
+            request.getRequestDispatcher("/crearUsuario.jsp").forward(request, response);
         }
     }
 
