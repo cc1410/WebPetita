@@ -84,7 +84,7 @@
             </div>
 
             <div class="col-md-12">
-                <form class="form-horizontal" method="POST">
+                <form class="form-horizontal" method="POST" action="Registro">
                     <fieldset>
 
                         <!-- Form Name -->
@@ -95,7 +95,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textinput">Titulo</label>  
                                     <div class="col-md-4">
-                                        <input id="textinput" name="textinput" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
+                                        <input id="textinput" name="tituloCurso" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
 
                                     </div>
                                 </div>
@@ -104,7 +104,7 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="year">Año</label>  
                                     <div class="col-md-4">
-                                        <input id="year" name="year" type="text" placeholder="ej: 2018 / 2019" class="form-control input-md" required="">
+                                        <input id="year" name="year" type="text" placeholder="ej: 2018" class="form-control input-md" required="">
 
                                     </div>
                                 </div>
@@ -113,19 +113,28 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="button1id"></label>
                                     <div class="col-md-8">
-                                        <button id="button1id" name="button1id" class="btn btn-success">Insertar</button>
-                                        <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
+                                        <input  type="submit" id="button1id" name="insertarCurso" class="btn btn-success" value="insertar">
+                                        <input type="reset" id="button2id" name="button2id" class="btn btn-danger" value="Borrar">
                                     </div>
                                 </div>
 
                             </fieldset>
                         </form>
 
-                </fieldset>
-                </form>
-
+                <%
+            String status = (String) request.getAttribute("curso");
+            if (status != null) {
+        %>
+        <div class="alert alert-danger">
+            <strong><%=  status %></strong> 
+        </div>
+        <%
+            }
+        %>
+                
 
             </div>
+             
 
     </body>
 </html>

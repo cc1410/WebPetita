@@ -5,12 +5,12 @@
 --%>
 <%@page import="model.Usuario"%>
 <%
-            Usuario logeado = (Usuario) session.getAttribute("login");
-            
-     String nom = logeado.getNombre();
+    Usuario logeado = (Usuario) session.getAttribute("login");
+
+    String nom = logeado.getNombre();
 
 
-        %>
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -64,7 +64,7 @@
             <div class="container-fluid">
                 <div class="col-md-2">
                     <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
-                
+
                 </div>
                 <div class="col-md-2">
                     <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
@@ -78,13 +78,13 @@
                 <div class="col-md-2">
                     <a href="asignaciones.jsp"> <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-<!--                <div class="col-md-2">
-                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
-                </div>-->
+                <!--                <div class="col-md-2">
+                                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
+                                </div>-->
             </div>
 
             <div class="col-md-12">
-                <form class="form-horizontal" method="POST">
+                <form class="form-horizontal" method="POST" action="Registro">
                     <fieldset>
 
                         <!-- Form Name -->
@@ -94,12 +94,12 @@
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="textinput">Titulo</label>  
                             <div class="col-md-4">
-                                <input id="textinput" name="textinput" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
+                                <input id="textinput" name="nombreAsignatura" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
 
                             </div>
                         </div>
 
-                        <!-- Select Basic -->
+<!--                         Select Basic 
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="curso">Añadir a curso</label>
                             <div class="col-md-4">
@@ -108,14 +108,14 @@
                                     <option value="2">Option two</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Button (Double) -->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="button1id"></label>
                             <div class="col-md-8">
-                                <button id="button1id" name="button1id" class="btn btn-success">Insertar</button>
-                                <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
+                                <input type="submit" id="button1id" name="insertarAsignatura" value="Insertar" class="btn btn-success">
+                                <button type="reset" id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
                             </div>
                         </div>
 
@@ -125,7 +125,16 @@
 
                 </fieldset>
                 </form>
-
+                <%
+                    String status = (String) request.getAttribute("asignatura");
+                    if (status != null) {
+                %>
+                <div class="alert alert-danger">
+                    <strong><%=  status%></strong> 
+                </div>
+                <%
+                    }
+                %>
 
             </div>
 

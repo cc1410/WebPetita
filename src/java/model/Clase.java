@@ -9,6 +9,13 @@ public class Clase {
 	private HorarioSemanal horario;
 	private Calendario calendario;
 	private Profesor tutor;
+
+    public Clase(String nombre) {
+        this.nombre = nombre;
+    }
+
+        
+    
 	public String getNombre() {
 		return nombre;
 	}

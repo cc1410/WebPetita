@@ -158,20 +158,18 @@
                             <label class="col-md-4 control-label" for="button1id"></label>
                             <div class="col-md-8">
                                 <input type="submit" id="button1id" name="crear" class="btn btn-default" value="Crear">
-                                <button id="Cancelar" name="Cancelar" class="btn btn-danger">Cancelar</button>
+                                <button id="Cancelar" type="reset" name="Cancelar" class="btn btn-danger">Cancelar</button>
                             </div>
                         </div>  
 
                     </fieldset>
                 </form>
-
-
-            </div>
-        </div>
-        <%
+                
+                <%
             String status = (String) request.getAttribute("status");
             if (status != null) {
         %>
+        <div class="col-md-12">
         <div class="alert alert-danger">
 
             <strong><%=status%></strong> 
@@ -179,6 +177,12 @@
         <%
             }
         %>
+        </div>
+
+
+            </div>
+        </div>
+        
         <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
 </html>

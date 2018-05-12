@@ -5,12 +5,17 @@
  */
 package Servlet;
 
+import excepciones.Excepciones;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jdbcPepitaWeb.Conexion;
+import model.Asignatura;
+import model.Clase;
+import model.Curso;
 import model.Usuario;
 
 /**
@@ -20,10 +25,12 @@ import model.Usuario;
 public class Registro extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
          Conexion conexion = new Conexion();
-        if ("Crear".equals(request.getParameter("crear"))) {//si clicamos en alta de usuario 
+         
+         //******************************************************** insertar usuario ********************************************************************************************
+        if ("Crear".equals(request.getParameter("crear"))) {//clicamos en alta de usuario 
             //recogemos los datos del formulario 
             String name = request.getParameter("nombre");
             String lastname = request.getParameter("apellidos");
@@ -31,7 +38,6 @@ public class Registro extends HttpServlet {
             String dni = request.getParameter("dni");
             String password = request.getParameter("password");
             int tipo = Integer.parseInt(request.getParameter("tipo"));
-
             //creamos un Empleado con los datos recogido del fomulario
             Usuario a = new Usuario(name, lastname, password, dni, mail, tipo);
             try {
@@ -39,11 +45,56 @@ public class Registro extends HttpServlet {
                     conexion.insertarProfesor(a);
                 }
                 request.setAttribute("status", "Usuario dado de alta");
-            } catch (Exception ex) {
-                request.setAttribute("status", ex);
+            } catch (Excepciones ex) {
+                request.setAttribute("status", ex.getMessage());
             }
             request.getRequestDispatcher("/crearUsuario.jsp").forward(request, response);
         }
+        //******************************************************** insertar Curso ********************************************************************************************
+        else if ("insertar".equals(request.getParameter("insertarCurso"))) {
+             String tituloCurso = request.getParameter("tituloCurso");
+            int year = Integer.parseInt(request.getParameter("year"));
+            Curso a = new Curso(tituloCurso, year);
+            try {
+                conexion.insertarCurso(a);
+                request.setAttribute("curso", "Curso dado de alta");
+            } catch (Excepciones ex) {
+                request.setAttribute("curso", ex.getMessage());
+            }
+            request.getRequestDispatcher("/crearCurso.jsp").forward(request, response);
+        }
+        // ******************************************************** insertar clase ********************************************************************************************
+        else if ("insertar".equals(request.getParameter("insertarClase"))) {
+             String tituloClase = request.getParameter("nombreClase");
+             
+            Clase a = new Clase(tituloClase);
+            try {
+                conexion.insertarClase(a);
+                request.setAttribute("clase", "Curso dado de alta");
+            } catch (Excepciones ex) {
+                request.setAttribute("clase", ex.getMessage());
+            }
+            request.getRequestDispatcher("/crearClase.jsp").forward(request, response);
+        }
+        // ******************************************************** insertar asignatura ********************************************************************************************
+        else if ("Insertar".equals(request.getParameter("insertarAsignatura"))) {
+             String tituloAsignatura = request.getParameter("nombreAsignatura");
+             
+            Asignatura a = new Asignatura(tituloAsignatura);
+            try {
+                conexion.insertarAsignatura(a);
+                request.setAttribute("asignatura", "Asignatura dada de alta");
+            } catch (Excepciones ex) {
+                request.setAttribute("asignatura", ex.getMessage());
+            }
+            request.getRequestDispatcher("/crearAsignatura.jsp").forward(request, response);
+        }
+        
+        
+        
+        
+        
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

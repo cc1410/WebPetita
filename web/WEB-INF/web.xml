@@ -8,6 +8,10 @@
         <servlet-name>Registro</servlet-name>
         <servlet-class>Servlet.Registro</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Lista</servlet-name>
+        <servlet-class>Servlet.Lista</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>Registro</servlet-name>
         <url-pattern>/Registro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Lista</servlet-name>
+        <url-pattern>/Lista</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

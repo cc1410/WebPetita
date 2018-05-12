@@ -86,7 +86,7 @@
             </div>
 
             <div class="container">
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST" action="Registro">
                     <fieldset>
 
                         <!-- Form Name -->
@@ -101,16 +101,20 @@
                             </div>
                         </div>
 
-                        <!-- Text input-->
+<!--                         Text input
+                        hacer aqui una lista de curso
                         <div class="form-group">
-                            <label class="col-md-4 control-label" for="nombreCurso">Curso</label>  
+                            <label class="col-md-4 control-label" for="idCurso">Tutor</label>
                             <div class="col-md-4">
-                                <input id="nombreCurso" name="nombreCurso" type="text" placeholder="nombre del curso al que pertenece" class="form-control input-md" required="">
-
+                                <select id="idProfesor" name="idCurso" class="form-control">
+                                    <option value="idCurso1">Curso1</option>
+                                    <option value="idCurso2">Curso2</option>
+                                </select>
                             </div>
                         </div>
 
-                        <!-- Select Basic -->
+                         Select Basic 
+                        hacer aqui una lista de Profesores
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="idProfesor">Tutor</label>
                             <div class="col-md-4">
@@ -119,19 +123,30 @@
                                     <option value="idprofesor2">profesor2</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- Button (Double) -->
                         <div class="form-group">
                             <label class="col-md-4 control-label" for="button1id"></label>
                             <div class="col-md-8">
-                                <button id="button1id" name="button1id" class="btn btn-success">Crear</button>
-                                <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
+                                <input type="submit" id="button1id" name="insertarClase" value="insertar" class="btn btn-success">
+                                <button type="reset" id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
                             </div>
                         </div>
 
                     </fieldset>
                 </form>
+                <%
+            String status = (String) request.getAttribute("clase");
+            if (status != null) {
+        %>
+        <div class="alert alert-danger">
+            <strong><%=  status %></strong> 
+        </div>
+        <%
+            }
+        %>
 
             </div>
+        </body>
 </html>
