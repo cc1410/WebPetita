@@ -1,30 +1,28 @@
 <%-- 
-    Document   : crearClase
-    Created on : 30-abr-2018, 12:36:39
+    Document   : crearCurso
+    Created on : 12-may-2018, 9:34:54
     Author     : Juan Elberto
 --%>
 <%@page import="model.Usuario"%>
 <%
-    Usuario logeado = (Usuario) session.getAttribute("login");
+            Usuario logeado = (Usuario) session.getAttribute("login");
+            
+     String nom = logeado.getNombre();
 
-    String nom = logeado.getNombre();
 
-
-%>
+        %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
-        <link href="css/buttonsCrearClaseAdmin.css" rel="stylesheet" type="text/css"/>
+        <link href="css/buttonsCrearUsuarioAdmin.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-         
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
@@ -57,7 +55,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -85,53 +83,49 @@
                 </div>-->
             </div>
 
-            <div class="container">
-                <form class="form-horizontal">
+            <div class="col-md-12">
+                <form class="form-horizontal" method="POST">
                     <fieldset>
 
                         <!-- Form Name -->
-                        <legend>Crear una Clase</legend>
+                        <legend>Crear un nuevo curso</legend>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="nombreClase">Titulo</label>  
-                            <div class="col-md-4">
-                                <input id="nombreClase" name="nombreClase" type="text" placeholder="nombre de la clase" class="form-control input-md" required="">
+                       
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Titulo</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="textinput" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
 
-                            </div>
-                        </div>
+                                    </div>
+                                </div>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="nombreCurso">Curso</label>  
-                            <div class="col-md-4">
-                                <input id="nombreCurso" name="nombreCurso" type="text" placeholder="nombre del curso al que pertenece" class="form-control input-md" required="">
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="year">Año</label>  
+                                    <div class="col-md-4">
+                                        <input id="year" name="year" type="text" placeholder="ej: 2018 / 2019" class="form-control input-md" required="">
 
-                            </div>
-                        </div>
+                                    </div>
+                                </div>
 
-                        <!-- Select Basic -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="idProfesor">Tutor</label>
-                            <div class="col-md-4">
-                                <select id="idProfesor" name="idProfesor" class="form-control">
-                                    <option value="idProfesor1">Profesor1</option>
-                                    <option value="idprofesor2">profesor2</option>
-                                </select>
-                            </div>
-                        </div>
+                                <!-- Button (Double) -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="button1id"></label>
+                                    <div class="col-md-8">
+                                        <button id="button1id" name="button1id" class="btn btn-success">Insertar</button>
+                                        <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
+                                    </div>
+                                </div>
 
-                        <!-- Button (Double) -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="button1id"></label>
-                            <div class="col-md-8">
-                                <button id="button1id" name="button1id" class="btn btn-success">Crear</button>
-                                <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
-                            </div>
-                        </div>
+                            </fieldset>
+                        </form>
 
-                    </fieldset>
+                </fieldset>
                 </form>
 
+
             </div>
+
+    </body>
 </html>

@@ -3,6 +3,14 @@
     Created on : 29-abr-2018, 21:41:52
     Author     : Juan Elberto
 --%>
+<%@page import="model.Usuario"%>
+<%
+            Usuario logeado = (Usuario) session.getAttribute("login");
+            
+     String nom = logeado.getNombre();
+
+
+        %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -32,7 +40,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> PepitaSchool</a>
+                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom%></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
@@ -57,25 +65,26 @@
             </div>
         </nav>
         <div class="main">
-            <div class="container-fluid">
+           <div class="container-fluid">
                 <div class="col-md-2">
-                    <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button>
+                    <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
+                
                 </div>
                 <div class="col-md-2">
                     <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button>
+                    <a href="crearAsignatura.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button>
+                    <a href="crearCurso.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button>
+                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-                <div class="col-md-2">
+<!--                <div class="col-md-2">
                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
-                </div>
+                </div>-->
             </div>
 
             <div class="col-md-12">
