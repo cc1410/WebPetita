@@ -1,6 +1,6 @@
 <%-- 
-    Document   : crearUsuario
-    Created on : 29-abr-2018, 21:41:52
+    Document   : crearCurso
+    Created on : 12-may-2018, 9:34:54
     Author     : Juan Elberto
 --%>
 <%@page import="model.Usuario"%>
@@ -11,9 +11,7 @@
 
 
         %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -24,9 +22,7 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
     <body>
@@ -65,7 +61,7 @@
             </div>
         </nav>
         <div class="main">
-           <div class="container-fluid">
+            <div class="container-fluid">
                 <div class="col-md-2">
                     <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
                 
@@ -88,99 +84,48 @@
             </div>
 
             <div class="col-md-12">
-                <form class="form-horizontal" method="POST" action="Registro">
+                <form class="form-horizontal" method="POST">
                     <fieldset>
 
                         <!-- Form Name -->
-                        <legend>Crear un nuevo Usuario</legend>
+                        <legend>Crear un nuevo curso</legend>
 
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="nombre">Nombre</label>  
-                            <div class="col-md-4">
-                                <input id="nombre" name="nombre" type="text" placeholder="Nombre" class="form-control input-md" required="">
+                       
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textinput">Titulo</label>  
+                                    <div class="col-md-4">
+                                        <input id="textinput" name="textinput" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
 
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="apellidos">Apellidos</label>  
-                            <div class="col-md-4">
-                                <input id="apellidos" name="apellidos" type="text" placeholder="apellidos" class="form-control input-md" required="">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="mail">Email</label>  
-                            <div class="col-md-4">
-                                <input id="mail" name="mail" type="text" placeholder="correo" class="form-control input-md" required="">
-
-                            </div>
-                        </div>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="password" required="">Password</label>  
-                            <div class="col-md-4">
-                                <input id="password" name="password" type="text" placeholder="Password" class="form-control input-md">
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="dni" required="">DNI</label>  
-                            <div class="col-md-4">
-                                <input id="dni" name="dni" type="text" placeholder="DNI" class="form-control input-md">
-                            </div>
-                        </div>
-                        <!-- Multiple Radios -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="tipo">Tipo Usuario</label>
-                            <div class="col-md-4">
-                                <div class="radio">
-                                    <label for="tipo-0">
-                                        <input type="radio" name="tipo" id="tipo-0" value="1" checked="checked">
-                                        Profesor
-                                    </label>
+                                    </div>
                                 </div>
-                                <div class="radio">
-                                    <label for="tipo-1">
-                                        <input type="radio" name="tipo" id="tipo-1" value="2">
-                                        Alumno
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Button (Double) -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="button1id"></label>
-                            <div class="col-md-8">
-                                <input type="submit" id="button1id" name="crear" class="btn btn-default" value="Crear">
-                                <button id="Cancelar" name="Cancelar" class="btn btn-danger">Cancelar</button>
-                            </div>
-                        </div>  
 
-                    </fieldset>
+                                <!-- Text input-->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="year">Año</label>  
+                                    <div class="col-md-4">
+                                        <input id="year" name="year" type="text" placeholder="ej: 2018 / 2019" class="form-control input-md" required="">
+
+                                    </div>
+                                </div>
+
+                                <!-- Button (Double) -->
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="button1id"></label>
+                                    <div class="col-md-8">
+                                        <button id="button1id" name="button1id" class="btn btn-success">Insertar</button>
+                                        <button id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                        </form>
+
+                </fieldset>
                 </form>
 
 
             </div>
-        </div>
-        <%
-            String status = (String) request.getAttribute("status");
-            if (status != null) {
-        %>
-        <div class="alert alert-danger">
 
-            <strong><%=status%></strong> 
-        </div>
-        <%
-            }
-        %>
-        <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
 </html>
-
-
