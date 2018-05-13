@@ -17,6 +17,9 @@ public class Curso {
         this.nombre = nombre;
         this.anyo = anyo;
     }
+
+    public Curso() {
+    }
     
     
         

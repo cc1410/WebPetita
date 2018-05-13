@@ -110,9 +110,10 @@
                                 <input type="text" value="<%= logeado.getApellido()%>" class="input-xlarge" name="apellido"><br>
                                 <label style="padding-bottom: 2%;">DNI</label>
                                 <input type="text" value="<%= logeado.getDni()%>" class="input-xlarge" name="dni"><br>
-                                <label style="padding-bottom: 2%;">Email</label>
-                                <input type="text" placeholder="<%= logeado.getEmail()%>" class="input-xlarge"><br>
-                                <input type="hidden" value="<%= logeado.getEmail()%>" class="input-xlarge" name="email"><br>
+                                <label style="padding-bottom: 2%;">Email: </label>
+                                <label><%= logeado.getEmail()%></label>
+                                <!--<input type="text" value="<%= logeado.getEmail()%>"readonly class="input-xlarge"><br>-->
+                                <input type="hidden"  value="<%= logeado.getEmail()%>" class="input-xlarge" name="email"><br>
                                 <input type="hidden" value="<%= logeado.getTipo()%>" name="tipo" >
                                 <div>
                                     <input type="submit" name="cambiarPerfil" value="Cambiar"   class="btn btn-primary">

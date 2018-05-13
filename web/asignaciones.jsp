@@ -3,6 +3,12 @@
     Created on : 12-may-2018, 9:38:02
     Author     : Juan Elberto
 --%>
+<%@page import="model.Alumno"%>
+<%@page import="model.Asignatura"%>
+<%@page import="model.Clase"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="model.Curso"%>
+<%@page import="java.util.List"%>
 <%@page import="model.Usuario"%>
 <%
     Usuario logeado = (Usuario) session.getAttribute("login");
@@ -15,16 +21,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        
+        <link href="css/contenidoAsignaciones.css" rel="stylesheet" type="text/css"/>
         <link href="css/buttonsCrearAsignacionesAdmin.css" rel="stylesheet" type="text/css"/>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
         <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
+
 
         <title>JSP Page</title>
     </head>
@@ -83,17 +89,175 @@
                 <div class="col-md-2">
                     <a href="asignaciones.jsp"> <button type="button" class="btn btn-asignaciones btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-                
+
                 <div class="col-md-2">
                     <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
                 </div>
                 <!--                <div class="col-md-2">
                                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>-->
             </div>
-            <div class="container">
-                
-            </div>
 
+            <div class="container" style="padding-top: 5%;">
+
+                <form method="POST" action="Lista" >
+                    <select name="asignacion" class="form-control">
+                        <option value="Curso-Clase">Curso-Clase</option>
+                        <option value="Clase-Tutor">Clase-Tutor</option>
+                        <option value="Curso-Asignatura">Curso-Asignatura</option>
+                        <option value="Alumno-Clase">Alumno-Clase</option>
+                        <option value="Profesor-Asignatura">Profesor-Asignatura</option>
+                    </select>
+                    <input type="submit" name="Asigancion" value="Asignacion">
+                </form>
+                <br />
+                <div class="row">
+                    <%
+                        List<Curso> listaCurso = (List) request.getAttribute("listaCurso");
+                        List<Clase> listaClase = (List) request.getAttribute("listaClase");
+                        List<Usuario> listaAlumno = (List) request.getAttribute("listaAlumno");
+                        List<Usuario> listaProfesor = (List) request.getAttribute("listaProfesor");
+                        List<Asignatura> listaAsignatura = (List) request.getAttribute("listaAsignatura");
+                        if (listaCurso != null && listaClase != null) {
+                    %>
+                    <form action="Update" method="POST">
+                        <label class="col-md-4 control-label" for="selectbasic">Curso</label>
+                        <select name="curso" class="form-control" >
+                            <%
+                                for (Curso c : listaCurso) {
+                            %>
+                            <option value="<%=c.getNombre()%>"><%=c.getNombre()%></option>
+                            <%
+                                }
+                            %>
+                        </select>
+                        <label class="col-md-4 control-label" for="selectbasic">Clase</label>
+                        <select name="clase" multiple class="form-control" >
+                            <%
+                                for (Clase c : listaClase) {
+                            %>
+                            <option value="<%=c.getNombre()%>"><%=c.getNombre()%></option>
+                            <%
+                                }%>
+                        </select>
+                        <input type="submit" name="asignarCursoClase" value="Asignar">
+                    </form>
+                    <%
+                    } else if (listaClase != null && listaProfesor != null) {
+                    %>
+                    <form action="Update" method="POST">
+                        <label class="col-md-4 control-label" for="selectbasic">Clase</label>
+                        <select name="clase" class="form-control" >
+                            <%
+                                for (Clase c : listaClase) {
+                            %>
+                            <option value="<%=c.getNombre()%>"><%=c.getNombre()%></option>
+                            <%
+                                }
+                            %>
+                        </select>
+                        <label class="col-md-4 control-label" for="selectbasic">Profesor</label>
+                        <select name="profesor" class="form-control" >
+                            <%
+                                for (Usuario p : listaProfesor) {
+                                    String profesor = p.getNombre() + " " + p.getApellido();
+                            %>
+                            <option value="<%=p.getEmail()%>"><%=profesor%></option>
+                            <%
+                                }%>
+                        </select>
+                        <input type="submit" name="asignarTutorClase" value="Asignar">
+                    </form>
+                    <%
+                    } else if (listaAsignatura != null && listaCurso != null) {
+                    %>
+                    <form action="Update" method="POST">
+                        <label class="col-md-4 control-label" for="selectbasic">Curso</label>
+                        <select name="curso" class="form-control" >
+                            <%
+                                for (Curso c : listaCurso) {
+                            %>
+                            <option value="<%=c.getNombre()%>"><%=c.getNombre()%></option>
+                            <%
+                                }
+                            %>
+                        </select>
+                        <label class="col-md-4 control-label" for="selectbasic">Asignatura</label>
+                        <select name="asignatura" multiple class="form-control" >
+                            <%
+                                for (Asignatura a : listaAsignatura) {
+                            %>
+                            <option value="<%=a.getNombre()%>"><%=a.getNombre()%></option>
+                            <%
+                                }%>
+                        </select>
+                        <input type="submit" name="asignarCursoAsignatura" value="Asignar">
+                    </form>
+                    <%
+                    } else if (listaAlumno != null && listaClase != null) {
+                    %>
+                    <form action="Update" method="POST">
+                        <label class="col-md-4 control-label" for="selectbasic">Clase</label>
+                        <select name="clase" class="form-control" >
+                            <%
+                                for (Clase c : listaClase) {
+                            %>
+                            <option value="<%=c.getNombre()%>"><%=c.getNombre()%></option>
+                            <%
+                                }
+                            %>
+                        </select>
+                        <label class="col-md-4 control-label" for="selectbasic">Alumno</label>
+                        <select name="alumno" multiple class="form-control" >
+                            <%
+                                for (Usuario a : listaAlumno) {
+                            %>
+                            <option value="<%=a.getEmail()%>"><%=a.getNombre()%></option>
+                            <%
+                                }%>
+                        </select>
+                        <input type="submit" name="asignarClaseAlumno" value="Asignar">
+                    </form>
+                    <%
+                    } else if (listaProfesor != null && listaAsignatura != null) {
+                    %>
+                    <form action="Update" method="POST">
+                        <label class="col-md-4 control-label" for="selectbasic">Profesor</label>
+                        <select name="profesor" class="form-control" >
+                            <%
+                                for (Usuario u : listaProfesor) {
+                            %>
+                            <option value="<%=u.getEmail()%>"><%=u.getNombre()%></option>
+                            <%
+                                }
+                            %>
+                        </select>
+                        <label class="col-md-4 control-label" for="selectbasic">Asignatura</label>
+                        <select name="asignatura" multiple class="form-control" >
+                            <%
+                                for (Asignatura a : listaAsignatura) {
+                            %>
+                            <option value="<%=a.getNombre()%>"><%=a.getNombre()%></option>
+                            <%
+                                }%>
+                        </select>
+                        <input type="submit" name="asignarProfesorAsignatura" value="Asignar">
+                    </form>
+                    <%
+                        }
+                    %>
+
+                </div>
+            </div>
+            <%
+                String status = (String) request.getAttribute("status");
+                if (status != null) {
+            %>
+            <div class="alert alert-danger">
+                <strong><%=  status%></strong> 
+            </div>
+            <%
+                }
+            %>
         </div>
 
 
@@ -101,8 +265,10 @@
 
 
 
-
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="js/menuhome.js" type="text/javascript"></script>
-        
+        <script src="js/contenidoAsignaciones.js" type="text/javascript"></script>
+
     </body>
 </html>

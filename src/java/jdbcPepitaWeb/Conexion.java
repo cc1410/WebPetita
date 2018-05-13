@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import model.Asignatura;
 import model.Clase;
 import model.Curso;
@@ -62,7 +64,19 @@ public class Conexion {
         usuario.setString(4, u.getDni());
         usuario.setString(5, u.getEmail());
         usuario.setInt(6, u.getTipo());
+        usuario.executeUpdate();
+        usuario.close();
+        if (u.getTipo() == 2) {
+            insertATablaAlumno(u);
+        }
+        desconectar();
+    }
 
+    public void insertATablaAlumno(Usuario u) throws SQLException {
+        String insert = "insert into alumno values (?, ?);";
+        PreparedStatement usuario = conexion.prepareStatement(insert);
+        usuario.setString(1, u.getEmail());
+        usuario.setString(2, null);
         usuario.executeUpdate();
         usuario.close();
         desconectar();
@@ -223,7 +237,7 @@ public class Conexion {
         aux.close();
         desconectar();
     }
-    
+
     //modificar Password
     public void modificarPassword(Usuario a) throws SQLException, Excepciones {
         conectar();
@@ -236,6 +250,180 @@ public class Conexion {
         aux.setString(1, a.getPassword());
         aux.setString(2, a.getEmail());
 
+        aux.executeUpdate();
+        aux.close();
+        desconectar();
+    }
+
+    //lista de cursos
+    public List<Curso> listaCurso() throws SQLException {
+        conectar();
+        String select = "select * from curso";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Curso> listAux = new ArrayList<>();
+
+        while (rs.next()) {
+            Curso c = new Curso();
+            c.setNombre(rs.getString("nombre"));
+            c.setAnyo(rs.getInt("ano"));
+            listAux.add(c);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+
+    //lista de Clases
+    public List<Clase> listaClase() throws SQLException {
+        conectar();
+        String select = "select * from clase ";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Clase> listAux = new ArrayList<>();
+
+        while (rs.next()) {
+            Clase c = new Clase();
+            c.setNombre(rs.getString("nombre"));
+            listAux.add(c);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+
+    //lista de alumnos
+    public List<Usuario> listaAlumnos() throws SQLException {
+        conectar();
+        String select = "select * from users where type=2 ";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Usuario> listAux = new ArrayList<>();
+
+        while (rs.next()) {
+            Usuario u = new Usuario();
+            u.setNombre(rs.getString("name"));
+            u.setEmail(rs.getString("mail"));
+            u.setApellido(rs.getString("lastname"));
+            listAux.add(u);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+
+    public List<Asignatura> listaAsignatura() throws SQLException {
+        conectar();
+        String select = "select * from asignatura";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Asignatura> listAux = new ArrayList<>();
+
+        while (rs.next()) {
+            Asignatura a = new Asignatura();
+            a.setNombre(rs.getString("nombre"));
+            listAux.add(a);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+
+    public List<Usuario> listaProfesorNotTutor() throws SQLException {
+        conectar();
+        String select = "select * from users where type = 1 and not exists(select tutor from clase where clase.tutor = users.mail)";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Usuario> listAux = new ArrayList<>();
+
+        while (rs.next()) {
+            Usuario u = new Usuario();
+            u.setNombre(rs.getString("name"));
+            u.setEmail(rs.getString("mail"));
+            u.setApellido(rs.getString("lastname"));
+            listAux.add(u);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+
+    
+    public List<Usuario> listaProfesor() throws SQLException {
+        conectar();
+        String select = "select * from users where type = 1";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Usuario> listAux = new ArrayList<>();
+
+        while (rs.next()) {
+            Usuario u = new Usuario();
+            u.setNombre(rs.getString("name"));
+            u.setEmail(rs.getString("mail"));
+            u.setApellido(rs.getString("lastname"));
+            listAux.add(u);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+    
+    public void asignarCursoClase(String nombreCurso, String nombreClase) throws SQLException {
+        conectar();
+        String insert = "update clase set curso=? where nombre=?;";
+        PreparedStatement aux = conexion.prepareStatement(insert);
+        aux.setString(1, nombreCurso);
+        aux.setString(2, nombreClase);
+        aux.executeUpdate();
+        aux.close();
+        desconectar();
+    }
+
+    public void asignarClaseTutor(String nombreTutor, String nombreClase) throws SQLException {
+        conectar();
+        String insert = "update clase set tutor=? where nombre=?;";
+        PreparedStatement aux = conexion.prepareStatement(insert);
+        aux.setString(1, nombreTutor);
+        aux.setString(2, nombreClase);
+        aux.executeUpdate();
+        aux.close();
+        desconectar();
+    }
+
+    public void asignarCursoAsignatura(String nombreAsignatura, String nombreCurso) throws SQLException {
+        conectar();
+        String insert = "update asignatura set curso=? where nombre=?;";
+        PreparedStatement aux = conexion.prepareStatement(insert);
+        aux.setString(1, nombreCurso);
+        aux.setString(2, nombreAsignatura);
+        aux.executeUpdate();
+        aux.close();
+        desconectar();
+    }
+
+    public void asignarClaseAlumno(String nombreAlumno, String nombreClase) throws SQLException {
+        conectar();
+        String insert = "update alumno set clase=? where email=?;";
+        PreparedStatement aux = conexion.prepareStatement(insert);
+        aux.setString(1, nombreClase);
+        aux.setString(2, nombreAlumno);
+        aux.executeUpdate();
+        aux.close();
+        desconectar();
+    }
+    
+    public void asignarProfesorAsignatura(String profesor,String asignatura) throws SQLException{
+        conectar();
+        String insert = "update asignatura set profesor=? where nombre=?;";
+        PreparedStatement aux = conexion.prepareStatement(insert);
+        aux.setString(1, profesor);
+        aux.setString(2, asignatura);
         aux.executeUpdate();
         aux.close();
         desconectar();

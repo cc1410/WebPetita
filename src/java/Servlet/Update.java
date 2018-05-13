@@ -57,8 +57,7 @@ public class Update extends HttpServlet {
                 request.setAttribute("cambioPerfil", ex.getMessage());
             }
             request.getRequestDispatcher("/perfilAdmin.jsp").forward(request, response);
-        }
-        //******************************************************** modificar Password *****************************************************************************
+        } //******************************************************** modificar Password *****************************************************************************
         else if ("Cambiar".equals(request.getParameter("cambiarPassword"))) {
             //recogemos los datos del formulario 
             String pass = request.getParameter("pass");
@@ -74,20 +73,66 @@ public class Update extends HttpServlet {
                 request.setAttribute("cambioPerfil", ex.getMessage());
             }
             request.getRequestDispatcher("/perfilAdmin.jsp").forward(request, response);
+        } else if ("Asignar".equals(request.getParameter("asignarCursoClase"))) {
+            String[] listClase = request.getParameterValues("clase");
+            String nombreCurso = request.getParameter("curso");
+            for (String clase : listClase) {
+                try {
+                    conexion.asignarCursoClase(nombreCurso, clase);
+                    request.setAttribute("status", "Asignacion completa");
+                } catch (SQLException ex) {
+                    request.setAttribute("status", ex.getMessage());
+                }
+            }
+            request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
+        } else if ("Asignar".equals(request.getParameter("asignarTutorClase"))) {
+            String nombreClase = request.getParameter("clase");
+            String nombreProfesor = request.getParameter("profesor");
+            try {
+                conexion.asignarClaseTutor(nombreProfesor, nombreClase);
+                request.setAttribute("status", "Asignacion completa");
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
+        } else if ("Asignar".equals(request.getParameter("asignarCursoAsignatura"))) {
+            String nombreCurso = request.getParameter("curso");
+            String[] listaAsignatura = request.getParameterValues("asignatura");
+            try {
+                for (String asignatura : listaAsignatura) {
+                    conexion.asignarCursoAsignatura(asignatura, nombreCurso);
+                    request.setAttribute("status", "Asignacion completa");
+                }
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
+        }else if ("Asignar".equals(request.getParameter("asignarClaseAlumno"))) {
+            String nombreClase = request.getParameter("clase");
+            String[] listaAlumno = request.getParameterValues("alumno");
+            try {
+                for (String alumno : listaAlumno) {
+                    conexion.asignarClaseAlumno(alumno, nombreClase);
+                    request.setAttribute("status", "Asignacion completa");
+                }
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
+        }else if ("Asignar".equals(request.getParameter("asignarProfesorAsignatura"))) {
+            String profesor = request.getParameter("profesor");
+            String[] listaAsignatura = request.getParameterValues("asignatura");
+            try {
+                for (String asignatura : listaAsignatura) {
+                    conexion.asignarProfesorAsignatura(profesor,asignatura);
+                    request.setAttribute("status", "Asignacion completa");
+                }
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
         }
 
-//        try (PrintWriter out = response.getWriter()) {
-//            /* TODO output your page here. You may use following sample code. */
-//            out.println("<!DOCTYPE html>");
-//            out.println("<html>");
-//            out.println("<head>");
-//            out.println("<title>Servlet Update</title>");            
-//            out.println("</head>");
-//            out.println("<body>");
-//            out.println("<h1>Servlet Update at " + request.getContextPath() + "</h1>");
-//            out.println("</body>");
-//            out.println("</html>");
-//        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

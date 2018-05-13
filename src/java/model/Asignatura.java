@@ -9,6 +9,10 @@ public class Asignatura {
         this.nombre = nombre;
     }
 
+    public Asignatura() {
+        
+    }
+
     public String getNombre() {
         return nombre;
     }

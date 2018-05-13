@@ -14,6 +14,9 @@ public class Clase {
         this.nombre = nombre;
     }
 
+    public Clase() {
+    }
+
         
     
 	public String getNombre() {
