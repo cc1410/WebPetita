@@ -16,7 +16,7 @@
 <html>
     <head>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
-        <link href="css/buttonsCrearUsuarioAdmin.css" rel="stylesheet" type="text/css"/>
+        <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -64,23 +64,28 @@
             <div class="container-fluid">
                 <div class="col-md-2">
                     <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
-
-                </div>
-                <div class="col-md-2">
-                    <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
-                </div>
-                <div class="col-md-2">
-                    <a href="crearAsignatura.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
+                
                 </div>
                 <div class="col-md-2">
                     <a href="crearCurso.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
+                    <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
-                <!--                <div class="col-md-2">
-                                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
-                                </div>-->
+                <div class="col-md-2">
+                    <a href="crearAsignatura.jsp"><button type="button" class="btn btn-crearAsignatura btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
+                </div>
+                
+                <div class="col-md-2">
+                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
+                </div>
+                
+                <div class="col-md-2">
+                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
+                </div>
+<!--                <div class="col-md-2">
+                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
+                </div>-->
             </div>
 
             <div class="col-md-12">

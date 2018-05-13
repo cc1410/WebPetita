@@ -16,9 +16,10 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
-        <link href="css/buttonsCrearUsuarioAdmin.css" rel="stylesheet" type="text/css"/>
+        
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -67,9 +68,35 @@
         </nav>
 
         <div class="main">
+            <div class="container-fluid">
+                <div class="col-md-2">
+                    <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user" ></span> Crear Usuarios</button></a>
+                
+                </div>
+                <div class="col-md-2">
+                    <a href="crearCurso.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="crearAsignatura.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
+                </div>
+                
+                <div class="col-md-2">
+                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
+                </div>
+                
+                <div class="col-md-2">
+                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
+                </div>
+<!--                <div class="col-md-2">
+                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
+                </div>-->
+            </div>
 
-            <div class="col-md-6">
-                <div class="well">
+            <div class="col-md-6" style="padding-top: 5%;">
+                <div class="well" >
                     <ul class="nav nav-tabs">
                         <li class="active"><a href="#home" data-toggle="tab">Profile</a></li>
                         <li><a href="#profile" data-toggle="tab">Password</a></li>
