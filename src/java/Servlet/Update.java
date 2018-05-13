@@ -38,11 +38,11 @@ public class Update extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         Conexion conexion = new Conexion();
 
-        //******************************************************** modificar erfil ********************************************************************************************
-        if ("Cambiar".equals(request.getParameter("cambiarPerfil"))) {//clicamos en alta de usuario 
+        //******************************************************** modificar perfil ********************************************************************************************
+        if ("Cambiar".equals(request.getParameter("cambiarPerfil"))) {
             //recogemos los datos del formulario 
             String name = request.getParameter("nombre");
-            String lastname = request.getParameter("apellidos");
+            String lastname = request.getParameter("apellido");
             String dni = request.getParameter("dni");
             String mail = request.getParameter("email");
             int tipo = Integer.parseInt(request.getParameter("tipo"));
@@ -53,6 +53,23 @@ public class Update extends HttpServlet {
                 conexion.modificarPerfil(a);
 
                 request.setAttribute("cambioPerfil", "Perfil modificado");
+            } catch (Excepciones ex) {
+                request.setAttribute("cambioPerfil", ex.getMessage());
+            }
+            request.getRequestDispatcher("/perfilAdmin.jsp").forward(request, response);
+        }
+        //******************************************************** modificar Password *****************************************************************************
+        else if ("Cambiar".equals(request.getParameter("cambiarPassword"))) {
+            //recogemos los datos del formulario 
+            String pass = request.getParameter("pass");
+            String mail = request.getParameter("email");
+            //creamos un Empleado con los datos recogido del fomulario
+            Usuario a = new Usuario(pass, mail);
+            try {
+
+                conexion.modificarPassword(a);
+
+                request.setAttribute("cambioPerfil", "Password modificado");
             } catch (Excepciones ex) {
                 request.setAttribute("cambioPerfil", ex.getMessage());
             }

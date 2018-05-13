@@ -86,34 +86,36 @@
                                 <label style="padding-bottom: 2%;">Email</label>
                                 <input type="text" placeholder="<%= logeado.getEmail()%>" class="input-xlarge"><br>
                                 <input type="hidden" value="<%= logeado.getEmail()%>" class="input-xlarge" name="email"><br>
-                                <input type="hidden" value="<%= logeado.getTipo() %>" name="tipo" >
+                                <input type="hidden" value="<%= logeado.getTipo()%>" name="tipo" >
                                 <div>
                                     <input type="submit" name="cambiarPerfil" value="Cambiar"   class="btn btn-primary">
                                 </div>
                             </form>
                         </div>
                         <div class="tab-pane fade" id="profile">
-                            <form id="tab2">
+                            <form id="tab2" method="POST" action="Update">
                                 <label>New Password</label>
-                                <input type="password" class="input-xlarge" value="<%= logeado.getPassword()%>">
+                                <input type="password" class="input-xlarge" value="<%= logeado.getPassword()%>" name="pass">
+                                <input type="hidden" value="<%= logeado.getEmail()%>" class="input-xlarge" name="email"><br>
                                 <div>
-                                    <input type="submit" name="cambiarPassword" value="Cmabiar" class="btn btn-primary">
+                                    <input type="submit" name="cambiarPassword" value="Cambiar" class="btn btn-primary">
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div> 
+                <%
+                    String status = (String) request.getAttribute("cambioPerfil");
+                    if (status != null) {
+                %>
+                <div class="alert alert-danger">
+                    <strong><%=  status%></strong> 
+                </div>
+                <%
+                    }
+                %>
             </div>
-            <%
-                String status = (String) request.getAttribute("cambioPerfil");
-                if (status != null) {
-            %>
-            <div class="alert alert-danger">
-                <strong><%=  status%></strong> 
-            </div>
-            <%
-                }
-            %>
+
         </div>
 
 

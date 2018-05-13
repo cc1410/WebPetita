@@ -205,6 +205,7 @@ public class Conexion {
         return existe;
     }
 
+    //modificar perfil
     public void modificarPerfil(Usuario a) throws SQLException, Excepciones {
         conectar();
         if (!existeUsuario(a)) {
@@ -217,6 +218,23 @@ public class Conexion {
         aux.setString(2, a.getApellido());
         aux.setString(3, a.getDni());
         aux.setString(4, a.getEmail());
+
+        aux.executeUpdate();
+        aux.close();
+        desconectar();
+    }
+    
+    //modificar Password
+    public void modificarPassword(Usuario a) throws SQLException, Excepciones {
+        conectar();
+        if (!existeUsuario(a)) {
+            throw new Excepciones("No existe la Usuario");
+        }
+
+        String insert = "update users set password=? where mail=?;";
+        PreparedStatement aux = conexion.prepareStatement(insert);
+        aux.setString(1, a.getPassword());
+        aux.setString(2, a.getEmail());
 
         aux.executeUpdate();
         aux.close();

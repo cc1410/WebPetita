@@ -29,6 +29,13 @@ public class Usuario {
         this.email = email;
         this.tipo = tipo;
     }
+
+    public Usuario(String password, String email) {
+        this.password = password;
+        this.email = email;
+    }
+
+  
     
     
 
