@@ -1,19 +1,13 @@
 <%-- 
-    Document   : home
-    Created on : 27-abr-2018, 20:08:25
+    Document   : alumnosProfesores
+    Created on : 15-may-2018, 14:53:12
     Author     : Juan Elberto
 --%>
-<%@page import="model.Usuario"%>
-<%
-    Usuario logeado = (Usuario) session.getAttribute("login");
 
-    String nom = logeado.getNombre();
-
-%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+   <head>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
         <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
@@ -22,7 +16,7 @@
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <title>Home</title>
+        <title>Asignaturas</title>
     </head>
     <body>
         <nav class="navbar navbar-inverse sidebar" role="navigation">
@@ -55,42 +49,35 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
+                        <li><a href="#">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                        <li ><a href="#">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+                        <li ><a href="#">Messages<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+                       
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="main">
+         <div class="main">
             <div class="container-fluid">
                 <div class="col-md-2">
                     <a href="alumnosProfesores.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button></a>
                 </div>
                 <div class="col-md-2">
-                    <a href=""><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
+                    <a href="clasesProfesores.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button>
+                    <a href="asignaturasProfesores.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Curso</button>
+                    <a href="cursosProfesores.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Curso</button></a>
                 </div>
 <!--                <div class="col-md-2">
-                    <button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Tareas</button>
+                    <a href=""><button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Tareas</button></a>
                 </div>
                 <div class="col-md-2">
-                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
+                    <a href=""><button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button></a>
                 </div>-->
             </div>
-
-            
-        </div>
-
-
-
-
-
-
-
-
-        <script src="js/menuhome.js" type="text/javascript"></script>
+         </div>
     </body>
 </html>
