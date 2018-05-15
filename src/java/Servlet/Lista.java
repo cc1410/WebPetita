@@ -8,11 +8,15 @@ package Servlet;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import jdbcPepitaWeb.Conexion;
+import model.Alumno;
 import model.Asignatura;
 import model.Clase;
 import model.Curso;
@@ -45,26 +49,22 @@ public class Lista extends HttpServlet {
                     List<Clase> listaClase = conexion.listaClase();
                     request.setAttribute("listaCurso", listaCurso);
                     request.setAttribute("listaClase", listaClase);
-                } else if (asignacion.equals("Curso-Asignatura")) 
-                {
+                } else if (asignacion.equals("Curso-Asignatura")) {
                     List<Curso> listaCurso = conexion.listaCurso();
                     List<Asignatura> listaAsignatura = conexion.listaAsignatura();
                     request.setAttribute("listaAsignatura", listaAsignatura);
                     request.setAttribute("listaCurso", listaCurso);
-                } else if (asignacion.equals("Clase-Tutor")) 
-                {
+                } else if (asignacion.equals("Clase-Tutor")) {
                     List<Clase> listaClase = conexion.listaClase();
                     List<Usuario> listProfesor = conexion.listaProfesorNotTutor();
                     request.setAttribute("listaProfesor", listProfesor);
                     request.setAttribute("listaClase", listaClase);
-                } else if (asignacion.equals("Alumno-Clase")) 
-                {
+                } else if (asignacion.equals("Alumno-Clase")) {
                     List<Usuario> listaAlumno = conexion.listaAlumnos();
                     List<Clase> listaClase = conexion.listaClase();
                     request.setAttribute("listaAlumno", listaAlumno);
                     request.setAttribute("listaClase", listaClase);
-                } else if (asignacion.equals("Profesor-Asignatura")) 
-                {
+                } else if (asignacion.equals("Profesor-Asignatura")) {
                     List<Usuario> listProfesor = conexion.listaProfesor();
                     List<Asignatura> listaAsignatura = conexion.listaAsignatura();
                     request.setAttribute("listaAsignatura", listaAsignatura);
@@ -74,7 +74,44 @@ public class Lista extends HttpServlet {
                 request.setAttribute("status", ex.getMessage());
             }
             request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
-        } 
+        } else if ("asignatura".equals(request.getParameter("asignatura"))) {
+            String email = request.getParameter("profesor");
+            try {
+                List<Asignatura> listaAsignatura = conexion.listAsignaturaByProfesor(email);
+                request.setAttribute("listaAsignatura", listaAsignatura);
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/asignaturasProfesores.jsp").forward(request, response);
+        } else if ("asignaturaAlumno".equals(request.getParameter("asignaturaAlumno"))) {
+            String email = request.getParameter("profesor");
+            try {
+                List<Asignatura> listaAsignatura = conexion.listAsignaturaByProfesor(email);
+                request.setAttribute("listaAsignatura", listaAsignatura);
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/alumnosProfesores.jsp").forward(request, response);
+        } else if ("Mostrar Alumnos".equals(request.getParameter("mostrarAlumno"))) {
+            String asignatura = request.getParameter("asignatura");
+            try {
+                List<Usuario> listaAlumno = conexion.listAlumnoByAsignatura(asignatura);
+                request.setAttribute("listaAlumno", listaAlumno);
+                request.setAttribute("asignatura", asignatura);
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            RequestDispatcher rd = request.getRequestDispatcher("/mostrarAlumnos.jsp");
+            rd.forward(request, response);
+        } else if ("listaAlumno".equals(request.getParameter("listaAlumno"))) {
+            try {
+                List<Usuario> listAlumno = conexion.listaAlumnos();
+                request.setAttribute("listaAlumno", listAlumno);
+            } catch (SQLException ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/eliminarAlumno.jsp").forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

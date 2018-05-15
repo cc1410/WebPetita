@@ -5,12 +5,12 @@
 --%>
 <%@page import="model.Usuario"%>
 <%
-            Usuario logeado = (Usuario) session.getAttribute("login");
-            
-     String nom = logeado.getNombre();
+    Usuario logeado = (Usuario) session.getAttribute("login");
+
+    String nom = logeado.getNombre();
 
 
-        %>
+%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
@@ -29,6 +29,7 @@
 
         <title>JSP Page</title>
     </head>
+    <% if (logeado != null && logeado.getTipo() == 0) {%>    
     <body>
         <nav class="navbar navbar-inverse sidebar" role="navigation">
             <div class="container-fluid">
@@ -65,10 +66,10 @@
             </div>
         </nav>
         <div class="main">
-           <div class="container-fluid">
+            <div class="container-fluid">
                 <div class="col-md-2">
                     <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-crearUsuario btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
-                
+
                 </div>
                 <div class="col-md-2">
                     <a href="crearCurso.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
@@ -79,17 +80,16 @@
                 <div class="col-md-2">
                     <a href="crearAsignatura.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
                 </div>
-                
+
                 <div class="col-md-2">
                     <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-               
-               <div class="col-md-2">
-                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
+
+                  <div class="col-md-2">
+                    <form action="Lista" method="POST">
+                        <button type="submit" class="btn btn-modificar btn-lg btn3d" name="listaAlumno" value="listaAlumno"><span class="glyphicon glyphicon-pencil"></span> Eliminar</button></a>
+                    </form>
                 </div>
-<!--                <div class="col-md-2">
-                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
-                </div>-->
             </div>
 
             <div class="col-md-12">
@@ -169,27 +169,28 @@
 
                     </fieldset>
                 </form>
-                
-                <%
-            String status = (String) request.getAttribute("status");
-            if (status != null) {
-        %>
-        <div class="col-md-12">
-        <div class="alert alert-danger">
 
-            <strong><%=status%></strong> 
-        </div>
-        <%
-            }
-        %>
-        </div>
+                <%
+                    String status = (String) request.getAttribute("status");
+                    if (status != null) {
+                %>
+                <div class="col-md-12">
+                    <div class="alert alert-danger">
+
+                        <strong><%=status%></strong> 
+                    </div>
+                    <%
+                        }
+                    %>
+                </div>
 
 
             </div>
         </div>
-        
+
         <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
+    <% } %>
 </html>
 
 

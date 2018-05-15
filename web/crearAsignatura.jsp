@@ -25,6 +25,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+     <% if (logeado != null && logeado.getTipo() == 0) {%>    
     <body>
         <nav class="navbar navbar-inverse sidebar" role="navigation">
             <div class="container-fluid">
@@ -81,11 +82,10 @@
                 </div>
                 
                 <div class="col-md-2">
-                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
+                    <form action="Lista" method="POST">
+                        <button type="submit" class="btn btn-modificar btn-lg btn3d" name="listaAlumno" value="listaAlumno"><span class="glyphicon glyphicon-pencil"></span> Eliminar</button></a>
+                    </form>
                 </div>
-<!--                <div class="col-md-2">
-                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
-                </div>-->
             </div>
 
             <div class="col-md-12">
@@ -144,4 +144,5 @@
             </div>
 
     </body>
+    <% }%>
 </html>

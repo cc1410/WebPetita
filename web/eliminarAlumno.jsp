@@ -1,13 +1,21 @@
 <%-- 
-    Document   : alumnosProfesores
-    Created on : 15-may-2018, 14:53:12
-    Author     : Juan Elberto
+    Document   : eliminarAlumno
+    Created on : 15-may-2018, 23:20:02
+    Author     : chen
 --%>
+<%@page import="java.util.List"%>
+<%@page import="model.Usuario"%>
+<%
+    Usuario logeado = (Usuario) session.getAttribute("login");
 
+    String nom = logeado.getNombre();
+
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-   <head>
+    <head>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
         <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
@@ -15,10 +23,11 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-        <title>Clases</title>
+        <title>JSP Page</title>
     </head>
+    <% if (logeado != null && logeado.getTipo() == 0) {%>    
     <body>
+
         <nav class="navbar navbar-inverse sidebar" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -29,13 +38,13 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> PepitaSchool</a>
+                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom%></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="home.jsp">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-                        <li ><a href="perfilProfesor.jsp">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
+                        <li class="active"><a href="homeadmin.jsp">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
+                        <li ><a href="perfilAdmin.jsp">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
                         <li ><a href="#">Messages<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
@@ -49,35 +58,49 @@
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
                         </li>
-                        <li><a href="#">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
-                        <li ><a href="#">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-                        <li ><a href="#">Messages<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
-                       
+
                     </ul>
                 </div>
             </div>
         </nav>
-         <div class="main">
+        <div class="main">
             <div class="container-fluid">
                 <div class="col-md-2">
-                    <a href="alumnosProfesores.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button></a>
+                    <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
+
                 </div>
                 <div class="col-md-2">
-                    <a href="clasesProfesores.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
+                    <a href="crearCurso.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="asignaturasProfesores.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Asignaturas</button></a>
+                    <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="cursosProfesores.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Curso</button></a>
+                    <a href="crearAsignatura.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
                 </div>
-<!--                <div class="col-md-2">
-                    <a href=""><button type="button" class="btn btn-warning btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Tareas</button></a>
+
+                <div class="col-md-2">
+                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d" style="color: white;"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
                 <div class="col-md-2">
-                    <a href=""><button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button></a>
-                </div>-->
+                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
+                </div>
             </div>
-         </div>
+            <br>
+            <div class="container">
+                <form action="Update" method="POST">
+                    <select name="alumno" class="form-control">
+                        <%
+                            List<Usuario> listaAlumno = (List) request.getAttribute("listaAlumno");
+                            for (Usuario u : listaAlumno) {
+                        %>
+                        <option value="<%=u.getEmail()%>"><%=u.getNombre() + " " + u.getApellido()%></option>
+                        <% }%>
+                    </select>
+                    <input type="submit" name="eliminar" value="Eliminar">
+                </form>
+            </div>
+            <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
+    <% }%>
 </html>

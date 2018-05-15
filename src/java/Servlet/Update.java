@@ -9,6 +9,7 @@ import excepciones.Excepciones;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -107,7 +108,7 @@ public class Update extends HttpServlet {
                 request.setAttribute("status", ex.getMessage());
             }
             request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
-        }else if ("Asignar".equals(request.getParameter("asignarClaseAlumno"))) {
+        } else if ("Asignar".equals(request.getParameter("asignarClaseAlumno"))) {
             String nombreClase = request.getParameter("clase");
             String[] listaAlumno = request.getParameterValues("alumno");
             try {
@@ -119,18 +120,23 @@ public class Update extends HttpServlet {
                 request.setAttribute("status", ex.getMessage());
             }
             request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
-        }else if ("Asignar".equals(request.getParameter("asignarProfesorAsignatura"))) {
+        } else if ("Asignar".equals(request.getParameter("asignarProfesorAsignatura"))) {
             String profesor = request.getParameter("profesor");
             String[] listaAsignatura = request.getParameterValues("asignatura");
             try {
                 for (String asignatura : listaAsignatura) {
-                    conexion.asignarProfesorAsignatura(profesor,asignatura);
+                    conexion.asignarProfesorAsignatura(profesor, asignatura);
                     request.setAttribute("status", "Asignacion completa");
                 }
             } catch (SQLException ex) {
                 request.setAttribute("status", ex.getMessage());
             }
             request.getRequestDispatcher("/asignaciones.jsp").forward(request, response);
+        } else if ("Eliminar".equals(request.getParameter("eliminar"))) {
+            String mail = request.getParameter("alumno");
+            conexion.eliminarAlumno(mail);
+            request.setAttribute("status", "Alumno eliminado");
+            request.getRequestDispatcher("/mensajeEliminar.jsp").forward(request, response);
         }
 
     }

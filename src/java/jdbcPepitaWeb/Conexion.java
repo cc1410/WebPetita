@@ -14,10 +14,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import model.Alumno;
 import model.Asignatura;
 import model.Clase;
 import model.Curso;
-import model.Profesor;
+import model.Nota;
 import model.Usuario;
 
 /**
@@ -195,11 +196,13 @@ public class Conexion {
             throw new Excepciones("Ya existe la Asignatura");
         }
 
-        String insert = "insert into asignatura values (?, ?);";
+        String insert = "insert into asignatura values (?, ?,?,?);";
 
         PreparedStatement clase = conexion.prepareStatement(insert);
         clase.setString(1, a.getNombre());
         clase.setString(2, null);
+        clase.setString(3, null);
+        clase.setString(4, null);
 
         clase.executeUpdate();
         clase.close();
@@ -354,7 +357,6 @@ public class Conexion {
         return listAux;
     }
 
-    
     public List<Usuario> listaProfesor() throws SQLException {
         conectar();
         String select = "select * from users where type = 1";
@@ -374,7 +376,7 @@ public class Conexion {
         desconectar();
         return listAux;
     }
-    
+
     public void asignarCursoClase(String nombreCurso, String nombreClase) throws SQLException {
         conectar();
         String insert = "update clase set curso=? where nombre=?;";
@@ -418,8 +420,8 @@ public class Conexion {
         aux.close();
         desconectar();
     }
-    
-    public void asignarProfesorAsignatura(String profesor,String asignatura) throws SQLException{
+
+    public void asignarProfesorAsignatura(String profesor, String asignatura) throws SQLException {
         conectar();
         String insert = "update asignatura set profesor=? where nombre=?;";
         PreparedStatement aux = conexion.prepareStatement(insert);
@@ -427,6 +429,114 @@ public class Conexion {
         aux.setString(2, asignatura);
         aux.executeUpdate();
         aux.close();
+        desconectar();
+    }
+
+    public List<Asignatura> listAsignaturaByProfesor(String email) throws SQLException {
+        conectar();
+        String select = "select * from asignatura where profesor = '" + email + "';";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Asignatura> listAux = new ArrayList<>();
+        while (rs.next()) {
+            Asignatura u = new Asignatura();
+            u.setNombre(rs.getString("nombre"));
+            u.setCurso(new Curso(rs.getString("curso")));
+            listAux.add(u);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+
+    public List<Usuario> listAlumnoByAsignatura(String nombreAsignatura) throws SQLException {
+        conectar();
+        String select = "select * from users where mail in(select email from alumno where clase in(select nombre from clase where curso in(select curso from asignatura where nombre='" + nombreAsignatura + "')))";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        List<Usuario> listAux = new ArrayList<>();
+        while (rs.next()) {
+            Usuario u = new Usuario();
+            u.setEmail(rs.getString("mail"));
+            u.setNombre(rs.getString("name"));
+            listAux.add(u);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return listAux;
+    }
+
+    public void insertNotaAlumno(Nota nota) throws SQLException, Excepciones {
+        conectar();
+        if (existeNota(nota)) {
+            throw new Excepciones("Ya existe la nota");
+        }
+        String insert = "insert into nota values (?,?,?,?,?,?);";
+        PreparedStatement n = conexion.prepareStatement(insert);
+        n.setString(1, nota.getNombreNota());
+        n.setString(2, nota.getAsignatura().getNombre());
+        n.setString(3, nota.getEstado());
+        n.setString(4, nota.getComentario());
+        n.setString(5, nota.getAlumno());
+        n.setInt(6, nota.getNota());
+        n.executeUpdate();
+        n.close();
+        desconectar();
+    }
+
+    private boolean existeNota(Nota n) throws SQLException {
+        conectar();
+        String select = "select * from nota where nombre='" + n.getNombreNota() + "'";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        boolean existe = false;
+        if (rs.next()) {
+            existe = true;
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return existe;
+    }
+
+    public Asignatura getAsignaturaByName(String nombre) throws SQLException {
+        conectar();
+        String select = "select * from asignatura where nombre='" + nombre + "'";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        Asignatura a = new Asignatura();
+        if (rs.next()) {
+            a.setNombre(nombre);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return a;
+    }
+
+    public Usuario getAlumnoByEmail(String email) throws SQLException {
+        conectar();
+        String select = "select * from users where mail='" + email + "'";
+        Statement st = conexion.createStatement();
+        ResultSet rs = st.executeQuery(select);
+        Usuario a = new Usuario();
+        if (rs.next()) {
+            a.setEmail(email);
+        }
+        rs.close();
+        st.close();
+        desconectar();
+        return a;
+    }
+
+    public void eliminarAlumno(String email) throws SQLException {
+        conectar();
+        String delete = "delete from users where mail='" + email + "'";
+        Statement st = conexion.createStatement();
+        st.executeUpdate(delete);
+        st.close();
         desconectar();
     }
 

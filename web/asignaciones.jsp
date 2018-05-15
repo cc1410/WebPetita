@@ -259,16 +259,9 @@
                 }
             %>
         </div>
-
-
-
-
-
-
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="js/menuhome.js" type="text/javascript"></script>
         <script src="js/contenidoAsignaciones.js" type="text/javascript"></script>
-
     </body>
 </html>

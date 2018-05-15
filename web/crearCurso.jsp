@@ -5,19 +5,19 @@
 --%>
 <%@page import="model.Usuario"%>
 <%
-            Usuario logeado = (Usuario) session.getAttribute("login");
-            
-     String nom = logeado.getNombre();
+    Usuario logeado = (Usuario) session.getAttribute("login");
+
+    String nom = logeado.getNombre();
 
 
-        %>
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <link href="css/buttonshome.css" rel="stylesheet" type="text/css"/>
         <link href="css/home.css" rel="stylesheet" type="text/css"/>
-        
+
         <link href="css/menuhome.css" rel="stylesheet" type="text/css"/>
         <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
@@ -26,6 +26,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
     </head>
+    <% if (logeado != null && logeado.getTipo() == 0) {%>    
     <body>
         <nav class="navbar navbar-inverse sidebar" role="navigation">
             <div class="container-fluid">
@@ -65,7 +66,7 @@
             <div class="container-fluid">
                 <div class="col-md-2">
                     <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
-                
+
                 </div>
                 <div class="col-md-2">
                     <a href="crearCurso.jsp"><button type="button" class="btn btn-crearCurso btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
@@ -76,17 +77,16 @@
                 <div class="col-md-2">
                     <a href="crearAsignatura.jsp"><button type="button" class="btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
                 </div>
-                
+
                 <div class="col-md-2">
                     <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-                
-                <div class="col-md-2">
-                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
+
+                      <div class="col-md-2">
+                    <form action="Lista" method="POST">
+                        <button type="submit" class="btn btn-modificar btn-lg btn3d" name="listaAlumno" value="listaAlumno"><span class="glyphicon glyphicon-pencil"></span> Eliminar</button></a>
+                    </form>
                 </div>
-<!--                <div class="col-md-2">
-                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
-                </div>-->
             </div>
 
             <div class="col-md-12">
@@ -96,51 +96,52 @@
                         <!-- Form Name -->
                         <legend>Crear un nuevo curso</legend>
 
-                       
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="textinput">Titulo</label>  
-                                    <div class="col-md-4">
-                                        <input id="textinput" name="tituloCurso" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
 
-                                    </div>
-                                </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="textinput">Titulo</label>  
+                            <div class="col-md-4">
+                                <input id="textinput" name="tituloCurso" type="text" placeholder="titulo de asignatura" class="form-control input-md" required="">
 
-                                <!-- Text input-->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="year">Año</label>  
-                                    <div class="col-md-4">
-                                        <input id="year" name="year" type="text" placeholder="ej: 2018" class="form-control input-md" required="">
+                            </div>
+                        </div>
 
-                                    </div>
-                                </div>
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="year">Año</label>  
+                            <div class="col-md-4">
+                                <input id="year" name="year" type="text" placeholder="ej: 2018" class="form-control input-md" required="">
 
-                                <!-- Button (Double) -->
-                                <div class="form-group">
-                                    <label class="col-md-4 control-label" for="button1id"></label>
-                                    <div class="col-md-8">
-                                        <input  type="submit" id="button1id" name="insertarCurso" class="btn btn-success" value="insertar">
-                                        <input type="reset" id="button2id" name="button2id" class="btn btn-danger" value="Borrar">
-                                    </div>
-                                </div>
+                            </div>
+                        </div>
 
-                            </fieldset>
-                        </form>
+                        <!-- Button (Double) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="button1id"></label>
+                            <div class="col-md-8">
+                                <input  type="submit" id="button1id" name="insertarCurso" class="btn btn-success" value="insertar">
+                                <input type="reset" id="button2id" name="button2id" class="btn btn-danger" value="Borrar">
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
 
                 <%
-            String status = (String) request.getAttribute("curso");
-            if (status != null) {
-        %>
-        <div class="alert alert-danger">
-            <strong><%=  status %></strong> 
-        </div>
-        <%
-            }
-        %>
-                
+                    String status = (String) request.getAttribute("curso");
+                    if (status != null) {
+                %>
+                <div class="alert alert-danger">
+                    <strong><%=  status%></strong> 
+                </div>
+                <%
+                    }
+                %>
+
 
             </div>
-             
+
 
     </body>
+    <% }%>
 </html>

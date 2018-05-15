@@ -18,6 +18,7 @@ import jdbcPepitaWeb.Conexion;
 import model.Asignatura;
 import model.Clase;
 import model.Curso;
+import model.Nota;
 import model.Usuario;
 
 /**
@@ -29,9 +30,9 @@ public class Registro extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
-         Conexion conexion = new Conexion();
-         
-         //******************************************************** insertar usuario ********************************************************************************************
+        Conexion conexion = new Conexion();
+
+        //******************************************************** insertar usuario ********************************************************************************************
         if ("Crear".equals(request.getParameter("crear"))) {//clicamos en alta de usuario 
             //recogemos los datos del formulario 
             String name = request.getParameter("nombre");
@@ -43,7 +44,7 @@ public class Registro extends HttpServlet {
             //creamos un Empleado con los datos recogido del fomulario
             Usuario a = new Usuario(name, lastname, password, dni, mail, tipo);
             try {
-                if(a.getTipo() == 1 || a.getTipo() == 2){
+                if (a.getTipo() == 1 || a.getTipo() == 2) {
                     conexion.insertarUsuario(a);
                 }
                 request.setAttribute("status", "Usuario dado de alta");
@@ -51,10 +52,9 @@ public class Registro extends HttpServlet {
                 request.setAttribute("status", ex.getMessage());
             }
             request.getRequestDispatcher("/crearUsuario.jsp").forward(request, response);
-        }
-        //******************************************************** insertar Curso ********************************************************************************************
+        } //******************************************************** insertar Curso ********************************************************************************************
         else if ("insertar".equals(request.getParameter("insertarCurso"))) {
-             String tituloCurso = request.getParameter("tituloCurso");
+            String tituloCurso = request.getParameter("tituloCurso");
             int year = Integer.parseInt(request.getParameter("year"));
             Curso a = new Curso(tituloCurso, year);
             try {
@@ -64,11 +64,10 @@ public class Registro extends HttpServlet {
                 request.setAttribute("curso", ex.getMessage());
             }
             request.getRequestDispatcher("/crearCurso.jsp").forward(request, response);
-        }
-        // ******************************************************** insertar clase ********************************************************************************************
+        } // ******************************************************** insertar clase ********************************************************************************************
         else if ("insertar".equals(request.getParameter("insertarClase"))) {
-             String tituloClase = request.getParameter("nombreClase");
-             
+            String tituloClase = request.getParameter("nombreClase");
+
             Clase a = new Clase(tituloClase);
             try {
                 conexion.insertarClase(a);
@@ -77,11 +76,10 @@ public class Registro extends HttpServlet {
                 request.setAttribute("clase", ex.getMessage());
             }
             request.getRequestDispatcher("/crearClase.jsp").forward(request, response);
-        }
-        // ******************************************************** insertar asignatura ********************************************************************************************
+        } // ******************************************************** insertar asignatura ********************************************************************************************
         else if ("Insertar".equals(request.getParameter("insertarAsignatura"))) {
-             String tituloAsignatura = request.getParameter("nombreAsignatura");
-             
+            String tituloAsignatura = request.getParameter("nombreAsignatura");
+
             Asignatura a = new Asignatura(tituloAsignatura);
             try {
                 conexion.insertarAsignatura(a);
@@ -90,13 +88,25 @@ public class Registro extends HttpServlet {
                 request.setAttribute("asignatura", ex.getMessage());
             }
             request.getRequestDispatcher("/crearAsignatura.jsp").forward(request, response);
+        } else if ("Insertar Nota".equals(request.getParameter("insertarNota"))) {
+            String asignatura = request.getParameter("asignatura");
+
+            String alumno = request.getParameter("alumno");
+            String nombreNota = request.getParameter("nombreNota");
+            String comentario = request.getParameter("comentario");
+            int nota = Integer.parseInt(request.getParameter("nota"));
+
+            try {
+                Asignatura a = conexion.getAsignaturaByName(asignatura);
+                Nota n = new Nota(a, comentario, nota, "activo", nombreNota, alumno);
+                conexion.insertNotaAlumno(n);
+                request.setAttribute("insert", "Nota añadido");
+            } catch (Excepciones ex) {
+                request.setAttribute("status", ex.getMessage());
+            }
+            request.getRequestDispatcher("/mostrarAlumnos.jsp").forward(request, response);
         }
-        
-        
-        
-        
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

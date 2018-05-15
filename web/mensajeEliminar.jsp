@@ -1,8 +1,9 @@
 <%-- 
-    Document   : crearClase
-    Created on : 30-abr-2018, 12:36:39
-    Author     : Juan Elberto
+    Document   : eliminarAlumno
+    Created on : 15-may-2018, 23:20:02
+    Author     : chen
 --%>
+<%@page import="java.util.List"%>
 <%@page import="model.Usuario"%>
 <%
     Usuario logeado = (Usuario) session.getAttribute("login");
@@ -22,13 +23,11 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-
         <title>JSP Page</title>
     </head>
     <% if (logeado != null && logeado.getTipo() == 0) {%>    
     <body>
+
         <nav class="navbar navbar-inverse sidebar" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,7 +38,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom%></a>
+                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom%> Tipo:<%= logeado.getTipo()%></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
@@ -58,8 +57,9 @@
                                 <li class="divider"></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
+                        </li>
 
-                    </ul>
+                    </ul    >
                 </div>
             </div>
         </nav>
@@ -73,72 +73,37 @@
                     <a href="crearCurso.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
                 </div>
                 <div class="col-md-2">
-                    <a href="crearClase.jsp"><button type="button" class="btn btn-crearClase btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
+                    <a href="crearClase.jsp"><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Crear Clases</button></a>
                 </div>
                 <div class="col-md-2">
                     <a href="crearAsignatura.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
                 </div>
 
                 <div class="col-md-2">
-                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
+                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d" style="color: white;"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-
-                              <div class="col-md-2">
-                    <form action="Lista" method="POST">
-                        <button type="submit" class="btn btn-modificar btn-lg btn3d" name="listaAlumno" value="listaAlumno"><span class="glyphicon glyphicon-pencil"></span> Eliminar</button></a>
-                    </form>
+                <div class="col-md-2">
+                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
                 </div>
             </div>
-
+            <br>
             <div class="container">
-                <form class="form-horizontal" method="POST" action="Registro">
-                    <fieldset>
-
-                        <!-- Form Name -->
-                        <legend>Crear una Clase</legend>
-
-                        <!-- Text input-->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="nombreClase">Titulo</label>  
-                            <div class="col-md-4">
-                                <input id="nombreClase" name="nombreClase" type="text" placeholder="nombre de la clase" class="form-control input-md" required="">
-
-                            </div>
-                        </div>
-                        <!-- Button (Double) -->
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="button1id"></label>
-                            <div class="col-md-8">
-                                <input type="submit" id="button1id" name="insertarClase" value="insertar" class="btn btn-success">
-                                <button type="reset" id="button2id" name="button2id" class="btn btn-danger">Cancelar</button>
-                            </div>
-                        </div>
-
-                    </fieldset>
+                <form action="Lista" method="POST">
+                    <input type="hidden" name="profesor" value="<%=logeado.getEmail()%>">
+                    <button type="submit" class="btn btn-primary" name="listaAlumno" value="listaAlumno">Volver</button>
                 </form>
                 <%
-                    String status = (String) request.getAttribute("clase");
+                    String status = (String) request.getAttribute("status");
                     if (status != null) {
-                        if (status == "Ya existe la clase") {
                 %>
-                <div class="alert alert-warning" style="text-align: center;">
+                <div class="alert alert-success">
                     <strong><%=  status%></strong> 
                 </div>
                 <%
-                } else if (status == "Clase dada de alta") {
-
-                %>
-                <div class="alert alert-success" style="text-align: center;">
-                    <strong><%=  status%></strong> 
-                </div>
-
-
-                <%
-                        }
                     }
                 %>
-
             </div>
+            <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
     <% }%>
 </html>
