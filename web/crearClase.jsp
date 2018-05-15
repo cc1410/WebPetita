@@ -22,8 +22,8 @@
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        
-         
+
+
 
         <title>JSP Page</title>
     </head>
@@ -57,7 +57,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#">One more separated link</a></li>
                             </ul>
-                        
+
                     </ul>
                 </div>
             </div>
@@ -66,7 +66,7 @@
             <div class="container-fluid">
                 <div class="col-md-2">
                     <a href="crearUsuario.jsp"><button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Crear Usuarios</button></a>
-                
+
                 </div>
                 <div class="col-md-2">
                     <a href="crearCurso.jsp"><button type="button" class="btn btn-info btn-lg btn3d"><span class="glyphicon glyphicon-paperclip"></span> Crear Curso</button></a>
@@ -77,17 +77,17 @@
                 <div class="col-md-2">
                     <a href="crearAsignatura.jsp"><button type="button" class="btn btn-success btn-lg btn3d"><span class="glyphicon glyphicon-ok"></span> Crear Asig.</button></a>
                 </div>
-                
+
                 <div class="col-md-2">
                     <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-                
+
                 <div class="col-md-2">
                     <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
                 </div>
-<!--                <div class="col-md-2">
-                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
-                </div>-->
+                <!--                <div class="col-md-2">
+                                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
+                                </div>-->
             </div>
 
             <div class="container">
@@ -106,29 +106,29 @@
                             </div>
                         </div>
 
-<!--                         Text input
-                        hacer aqui una lista de curso
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="idCurso">Tutor</label>
-                            <div class="col-md-4">
-                                <select id="idProfesor" name="idCurso" class="form-control">
-                                    <option value="idCurso1">Curso1</option>
-                                    <option value="idCurso2">Curso2</option>
-                                </select>
-                            </div>
-                        </div>
-
-                         Select Basic 
-                        hacer aqui una lista de Profesores
-                        <div class="form-group">
-                            <label class="col-md-4 control-label" for="idProfesor">Tutor</label>
-                            <div class="col-md-4">
-                                <select id="idProfesor" name="idProfesor" class="form-control">
-                                    <option value="idProfesor1">Profesor1</option>
-                                    <option value="idprofesor2">profesor2</option>
-                                </select>
-                            </div>
-                        </div>-->
+                        <!--                         Text input
+                                                hacer aqui una lista de curso
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="idCurso">Tutor</label>
+                                                    <div class="col-md-4">
+                                                        <select id="idProfesor" name="idCurso" class="form-control">
+                                                            <option value="idCurso1">Curso1</option>
+                                                            <option value="idCurso2">Curso2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                        
+                                                 Select Basic 
+                                                hacer aqui una lista de Profesores
+                                                <div class="form-group">
+                                                    <label class="col-md-4 control-label" for="idProfesor">Tutor</label>
+                                                    <div class="col-md-4">
+                                                        <select id="idProfesor" name="idProfesor" class="form-control">
+                                                            <option value="idProfesor1">Profesor1</option>
+                                                            <option value="idprofesor2">profesor2</option>
+                                                        </select>
+                                                    </div>
+                                                </div>-->
 
                         <!-- Button (Double) -->
                         <div class="form-group">
@@ -142,16 +142,28 @@
                     </fieldset>
                 </form>
                 <%
-            String status = (String) request.getAttribute("clase");
-            if (status != null) {
-        %>
-        <div class="alert alert-danger">
-            <strong><%=  status %></strong> 
-        </div>
-        <%
-            }
-        %>
+                    String status = (String) request.getAttribute("clase");
+                    if (status != null) {
+                        if (status == "Ya existe la clase") {
+                %>
+                <div class="alert alert-warning" style="text-align: center;">
+                    <strong><%=  status%></strong> 
+                </div>
+                <%
+                    }
+                    else if (status == "Clase dada de alta") {
+
+                %>
+                <div class="alert alert-success" style="text-align: center;">
+                    <strong><%=  status%></strong> 
+                </div>
+
+
+                <%
+                    }
+                    }
+                %>
 
             </div>
-        </body>
+    </body>
 </html>

@@ -9,9 +9,8 @@
             Usuario logeado = (Usuario) session.getAttribute("login");
             
      String nom = logeado.getNombre();
-
-
-        %>
+     
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -28,7 +27,30 @@
 
         <title>JSP Page</title>
     </head>
+    <%
+        int tipo = logeado.getTipo();
+        if (tipo == 1) {
+            request.getRequestDispatcher("home.jsp").forward(request, response);
+    %>
+    
+    
+<!--    <body>
+         <h1>Pagina de Profesor</h1>
+    </body>-->
+   
+    
+    
+<%    
+    
+    
+    }else if(tipo == 0){
+    
+
+
+
+        %>
     <body>
+        
         <nav class="navbar navbar-inverse sidebar" role="navigation">
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
@@ -39,7 +61,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom %></a>
+                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom %> Tipo:<%= logeado.getTipo()%></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
@@ -81,7 +103,7 @@
                 </div>
                 
                 <div class="col-md-2">
-                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
+                    <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d" style="color: white;"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
                  <div class="col-md-2">
                     <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
@@ -146,6 +168,9 @@
 
 
         <script src="js/menuhome.js" type="text/javascript"></script>
+        <%
+        }
+        %>
     </body>
 </html>
 

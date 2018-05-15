@@ -31,8 +31,10 @@
     background-color:#5bc0de;
 }
 .btn-asign {
+    color: white;
     box-shadow:0 0 0 1px #f0ad4e inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #eea236, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
     background-color:#f0ad4e;
+    
 }
 .btn-default1 {
     box-shadow:0 0 0 1px #E067D3 inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #E067D3, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);
@@ -54,6 +56,8 @@
 .btn-asignaciones {
     /*box-shadow:0 0 0 1px #f0ad4e inset, 0 0 0 2px rgba(255,255,255,0.15) inset, 0 8px 0 0 #eea236, 0 8px 0 1px rgba(0,0,0,0.4), 0 8px 8px 1px rgba(0,0,0,0.5);*/
     background-color:#f0ad4e;
+    color: white;
+    
 }
 
 .btn-crearUsuario {

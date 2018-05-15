@@ -114,6 +114,7 @@ public class Conexion {
             aux.setEmail(rs.getString("mail"));
             aux.setDni(rs.getString("dni"));
             aux.setPassword(rs.getString("password"));
+            aux.setTipo(rs.getInt("type"));
         } else {
             throw new Excepciones("Password incorrecto");
         }

@@ -72,7 +72,7 @@ public class Registro extends HttpServlet {
             Clase a = new Clase(tituloClase);
             try {
                 conexion.insertarClase(a);
-                request.setAttribute("clase", "Clase dado de alta");
+                request.setAttribute("clase", "Clase dada de alta");
             } catch (Excepciones ex) {
                 request.setAttribute("clase", ex.getMessage());
             }
