@@ -3,7 +3,13 @@
     Created on : 27-abr-2018, 20:08:25
     Author     : Juan Elberto
 --%>
+<%@page import="model.Usuario"%>
+<%
+    Usuario logeado = (Usuario) session.getAttribute("login");
 
+    String nom = logeado.getNombre();
+
+%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -71,7 +77,7 @@
         <div class="main">
             <div class="container-fluid">
                 <div class="col-md-2">
-                <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button>
+                    <button type="button" class="btn3d btn btn-default btn-lg"><span class="glyphicon glyphicon-user"></span> Alumnos</button>
                 </div>
                 <div class="col-md-2">
                     <a href=""><button type="button" class="btn btn-primary btn-lg btn3d" ><span class="glyphicon glyphicon-tags"></span> Clases</button></a>
@@ -89,42 +95,42 @@
                     <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>
                 </div>
             </div>
-            
-                <div class="col-md-12">
-                    <form class="form-horizontal">
-                        <fieldset>
 
-                            <!-- Form Name -->
-                            <legend>Lista de Asistencia</legend>
+            <div class="col-md-12">
+                <form class="form-horizontal">
+                    <fieldset>
 
-                            <!-- Multiple Radios (inline) -->
-                            <div class="form-group">
-                                <label class="col-md-6 " for="radios">Alumno1 Apellidos </label>
-                                <div class="col-md-6"> 
-                                    <label class="radio-inline" for="radios-0">
-                                        <input type="radio" name="radios" id="radios-0" value="asistir" checked="checked">
-                                        asistir
-                                    </label> 
-                                    <label class="radio-inline" for="radios-1">
-                                        <input type="radio" name="radios" id="radios-1" value="retraso">
-                                        retraso
-                                    </label> 
-                                    <label class="radio-inline" for="radios-2">
-                                        <input type="radio" name="radios" id="radios-2" value="ausencia">
-                                        ausencia
-                                    </label> 
-                                    <label class="radio-inline" for="radios-3">
-                                        <input type="radio" name="radios" id="radios-3" value="justificada">
-                                        justificada
-                                    </label>
-                                </div>
+                        <!-- Form Name -->
+                        <legend>Lista de Asistencia</legend>
+
+                        <!-- Multiple Radios (inline) -->
+                        <div class="form-group">
+                            <label class="col-md-6 " for="radios">Alumno1 Apellidos </label>
+                            <div class="col-md-6"> 
+                                <label class="radio-inline" for="radios-0">
+                                    <input type="radio" name="radios" id="radios-0" value="asistir" checked="checked">
+                                    asistir
+                                </label> 
+                                <label class="radio-inline" for="radios-1">
+                                    <input type="radio" name="radios" id="radios-1" value="retraso">
+                                    retraso
+                                </label> 
+                                <label class="radio-inline" for="radios-2">
+                                    <input type="radio" name="radios" id="radios-2" value="ausencia">
+                                    ausencia
+                                </label> 
+                                <label class="radio-inline" for="radios-3">
+                                    <input type="radio" name="radios" id="radios-3" value="justificada">
+                                    justificada
+                                </label>
                             </div>
+                        </div>
 
-                        </fieldset>
-                    </form>
+                    </fieldset>
+                </form>
 
-                </div>
             </div>
+        </div>
 
 
 

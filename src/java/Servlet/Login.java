@@ -44,8 +44,15 @@ public class Login extends HttpServlet {
                 Usuario user = conexion.loginUser(mail, password);
                 // Guardas en la variable de sesión el user o el mail
                 System.out.println(user.getNombre());
-                request.getSession(true).setAttribute("login", user);
+                int tipo = user.getTipo();
+                if (tipo == 0){
+                    request.getSession(true).setAttribute("login", user);
                 response.sendRedirect(request.getContextPath() + "/homeadmin.jsp");
+                }else if(tipo == 1){
+                    request.getSession(true).setAttribute("login", user);
+                response.sendRedirect(request.getContextPath() + "/home.jsp");
+                }
+                
                 
             } catch (Excepciones | SQLException ex) {
                 request.setAttribute("status", ex.getMessage());

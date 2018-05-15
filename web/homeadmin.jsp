@@ -27,28 +27,7 @@
 
         <title>JSP Page</title>
     </head>
-    <%
-        int tipo = logeado.getTipo();
-        if (tipo == 1) {
-            request.getRequestDispatcher("home.jsp").forward(request, response);
-    %>
     
-    
-<!--    <body>
-         <h1>Pagina de Profesor</h1>
-    </body>-->
-   
-    
-    
-<%    
-    
-    
-    }else if(tipo == 0){
-    
-
-
-
-        %>
     <body>
         
         <nav class="navbar navbar-inverse sidebar" role="navigation">
@@ -168,9 +147,7 @@
 
 
         <script src="js/menuhome.js" type="text/javascript"></script>
-        <%
-        }
-        %>
+      
     </body>
 </html>
 
