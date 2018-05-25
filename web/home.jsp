@@ -43,8 +43,6 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="home.jsp">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
                         <li ><a href="perfilProfesor.jsp">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-                            </ul>
-                        </li>
                     </ul>
                 </div>
             </div>

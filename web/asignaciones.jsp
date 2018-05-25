@@ -89,12 +89,11 @@
                 <div class="col-md-2">
                     <a href="asignaciones.jsp"> <button type="button" class="btn btn-asignaciones btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
-
-                <div class="col-md-2">
-                    <a href="modoficar.jsp"> <button type="button" class="btn btn-modificar btn-lg btn3d"><span class="glyphicon glyphicon-pencil"></span> Modificar</button></a>
+               <div class="col-md-2">
+                    <form action="Lista" method="POST">
+                        <button type="submit" class="btn btn-modificar btn-lg btn3d" name="listaAlumno" value="listaAlumno"><span class="glyphicon glyphicon-pencil"></span> Eliminar</button></a>
+                    </form>
                 </div>
-                <!--                <div class="col-md-2">
-                                    <button type="button" class="btn3d btn btn-default1 btn-lg"><span class="glyphicon glyphicon-eye-open"></span> Notas</button>-->
             </div>
 
             <div class="container" style="padding-top: 5%;">
