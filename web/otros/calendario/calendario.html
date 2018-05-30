@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Calendar</title>
+    
+    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
+    <meta name="author" content="">
+    
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" />
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="assets/lib/bootstrap/css/bootstrap.css">
+    <link href="css/countdown.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.rtl.css" rel="stylesheet" type="text/css"/>
+    <link href="css/main.rtl.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style-switcher.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style-switcher.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/theme.css" rel="stylesheet" type="text/css"/>
+    <link href="css/theme.min.css" rel="stylesheet" type="text/css"/>
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.0/fullcalendar.min.css">
+
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+    <!--For Development Only. Not required -->
+    <script>
+        less = {
+            env: "development",
+            relativeUrls: false,
+            rootpath: "/calendario/"
+        };
+    </script>
+    <link rel="stylesheet" href="assets/css/style-switcher.css">
+    <link rel="stylesheet/less" type="text/css" href="assets/less/theme.less">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.7.1/less.js"></script>
+    
+</head>
+<body> 
+    <div class="body">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="well well-sm">
+                    <div id="add-event-form">
+                        <fieldset>
+                            <legend>Add Custom Event</legend>
+                            <span class="help-block">Event Title</span>
+                            <input id="title" name="title" type="text" placeholder="event title" class="form-control input-small">
+
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="priority" value="label label-default" checked>
+                                    <span class="label label-default">default</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="priority" value="label label-primary">
+                                    <span class="label label-primary">primary</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="priority" value="label label-warning">
+                                    <span class="label label-warning">warning</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="priority" value="label label-success">
+                                    <span class="label label-success">success</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="priority" value="label label-info">
+                                    <span class="label label-info">info</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    <input type="radio" name="priority" value="label label-danger">
+                                    <span class="label label-danger">danger</span>
+                                </label>
+                            </div>
+                            <br>
+                            <button id="add-event" type="button" class="btn btn-sm btn-default">Add Event</button>
+                        </fieldset>
+                    </div>
+
+                </div>
+                <div class="well well-sm">
+                    <h4>Draggable Events</h4>
+                    <ul id='external-events' class="list-unstyled">
+                        <li class="external-event"><span class="label label-default">My Event 1</span></li>
+                        <li class="external-event"><span class="label label-primary">My Event 2</span></li>
+                        <li class="external-event"><span class="label label-danger">My Event 3</span></li>
+                        <li class="external-event"><span class="label label-success">My Event 4</span></li>
+                        <li class="external-event"><span class="label label-warning">My Event 5</span></li>
+                        <li class="external-event"><span class="label label-info">My Event 6</span></li>
+                    </ul>
+
+
+                    <div class="checkbox anim-checkbox h4">
+                        <input type="checkbox" id="drop-remove" class="danger">
+                        <label for="drop-remove">remove after drop</label>
+                    </div>
+
+                </div>
+            </div>
+            <div id="calendar" class="col-lg-9"></div>
+        </div>
+    </div>
+    <script src="js/core.js"></script>
+            <!-- Metis demo scripts -->
+            <script src="js/app.js"></script>
+
+                <script>
+                    $(function() {
+                      Metis.MetisCalendar();
+                    });
+                </script>
+    <script src="js/style-switcher.js" type="text/javascript"></script>
+</body>
+</html>

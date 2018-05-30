@@ -1,5 +1,6 @@
 body{
-    background-color: #80FA72;
+    
+    background-image: url("../img/universidad2.jpg");
 }
 /*body, html {
     height: 100%;
@@ -12,6 +13,19 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b9d2e0', end
 
 }*/
 
+
+#logoLoginDiv{ 
+    background-color: white > .opacity: 1;
+    
+   
+}
+
+
+#logoLogin{
+    
+    
+    
+}
 .login_box{
     background:#f7f7f7;
     border:3px solid #F4F4F4;

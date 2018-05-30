@@ -38,14 +38,14 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom%> Tipo:<%= logeado.getTipo()%></a>
+                    <a class="navbar-brand" href="otros/perfil/perfil.html"><img src="img/MINILOGO.png" style="width: 30px; height: 30px;"> <%=  nom%> Tipo:<%= logeado.getTipo()%></a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-sidebar-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="homeadmin.jsp">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
                         <li ><a href="perfilAdmin.jsp">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-                        <li ><a href="#">Messages<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
+                        <li ><a href="index.jsp">Salir<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-remove"></span></a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
                             <ul class="dropdown-menu forAnimate" role="menu">
@@ -55,11 +55,11 @@
                                 <li class="divider"></li>
                                 <li><a href="#">Separated link</a></li>
                                 <li class="divider"></li>
-                                <li><a href="#">One more separated link</a></li>
+                                <li><a href="index.jsp">SALIR</a></li>
                             </ul>
                         </li>
 
-                    </ul    >
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -103,6 +103,9 @@
                     <a href="http://ec2-54-209-220-253.compute-1.amazonaws.com/sites/default/files/skiptu-template-0.3.zip" class="btn btn-lg " ><span class="glyphicon glyphicon-cloud-download"></span> Descargar PepitaSchool para MacOs</a>
                 </div>
             </div>
+<!--            <div id="calendar" style="width: 100%; height: 40%;">
+                <iframe src="otros/calendario/calendario.html"></iframe>
+            </div>-->
             <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
     <% }%>

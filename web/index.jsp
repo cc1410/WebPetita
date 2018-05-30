@@ -16,7 +16,7 @@ and open the template in the editor.
         <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
         <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-        <title>TODO supply a title</title>
+        <title>PepitaSchool Login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/index.css" rel="stylesheet" type="text/css"/>
@@ -31,7 +31,7 @@ and open the template in the editor.
         }</script>
 
         <div class="container">
-            <h1 class="welcome text-center"><img src="img/graduate-student-avat 512.png"></h1>
+            <div id="logoLoginDiv" class="welcome text-center"><img id="logoLogin" src="img/graduate-student-avat 512.png"></div>
             <div class="card card-container">
                 <h2 class='login_title text-center'>Login</h2>
                 <hr>

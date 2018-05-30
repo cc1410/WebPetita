@@ -48,8 +48,7 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="homeadmin.jsp">Home<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-home"></span></a></li>
                         <li ><a href="perfilAdmin.jsp">Profile<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-user"></span></a></li>
-                        <li ><a href="#">Messages<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-envelope"></span></a></li>
-                        <li class="dropdown">
+                        <li ><a href="index.jsp">Salir<span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-remove"></span></a></li><li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <span class="caret"></span><span style="font-size:16px;" class="pull-right hidden-xs showopacity glyphicon glyphicon-cog"></span></a>
                             <ul class="dropdown-menu forAnimate" role="menu">
                                 <li><a href="#">Action</a></li>
@@ -85,7 +84,7 @@
                     <a href="asignaciones.jsp"> <button type="button" class="btn btn-asign btn-lg btn3d"><span class="glyphicon glyphicon-book"></span> Asignaciones</button></a>
                 </div>
 
-                  <div class="col-md-2">
+                <div class="col-md-2">
                     <form action="Lista" method="POST">
                         <button type="submit" class="btn btn-modificar btn-lg btn3d" name="listaAlumno" value="listaAlumno"><span class="glyphicon glyphicon-pencil"></span> Eliminar</button></a>
                     </form>
@@ -183,14 +182,55 @@
                         }
                     %>
                 </div>
+                <div class="col-md-12" style="text-align: center; padding-top: 3%;">
+                    <h1>Insertar CSV</h1>
+                    <label>
+                        <input type="file" name="archivo" id="csv" />
+                    </label>
+                    </br>
+                    <label>
+                        <input type="submit" name="enviar" id="enviar" value="Subir Archivo" />
+                    </label>
+                    <div id="drop_zone">Drop files here</div>
+                    <output id="list"></output>
 
+                    <script>
+                        function handleFileSelect(evt) {
+                            evt.stopPropagation();
+                            evt.preventDefault();
+
+                            var files = evt.dataTransfer.files; // FileList object.
+
+                            // files is a FileList of File objects. List some properties.
+                            var output = [];
+                            for (var i = 0, f; f = files[i]; i++) {
+                                output.push('<li><strong>', escape(f.name), '</strong> (', f.type || 'n/a', ') - ',
+                                        f.size, ' bytes, last modified: ',
+                                        f.lastModifiedDate.toLocaleDateString(), '</li>');
+                            }
+                            document.getElementById('list').innerHTML = '<ul>' + output.join('') + '</ul>';
+                        }
+
+                        function handleDragOver(evt) {
+                            evt.stopPropagation();
+                            evt.preventDefault();
+                            evt.dataTransfer.dropEffect = 'copy'; // Explicitly show this is a copy.
+                        }
+
+                        // Setup the dnd listeners.
+                        var dropZone = document.getElementById('drop_zone');
+                        dropZone.addEventListener('dragover', handleDragOver, false);
+                        dropZone.addEventListener('drop', handleFileSelect, false);
+                    </script>
+                </div>
 
             </div>
+
         </div>
 
         <script src="js/menuhome.js" type="text/javascript"></script>
     </body>
-    <% } %>
+    <% }%>
 </html>
 
 
