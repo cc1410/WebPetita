@@ -169,18 +169,27 @@
                     </fieldset>
                 </form>
 
-                <%
+              <%
                     String status = (String) request.getAttribute("status");
                     if (status != null) {
+                        if (status == "Ya existe el Usuario") {
                 %>
-                <div class="col-md-12">
-                    <div class="alert alert-danger">
+                <div class="alert alert-warning" style="text-align: center;">
+                    <strong><%=  status%></strong> 
+                </div>
+                <%
+                } else if (status == "Usuario dado de alta") {
 
-                        <strong><%=status%></strong> 
-                    </div>
-                    <%
+                %>
+                <div class="alert alert-success" style="text-align: center;">
+                    <strong><%=  status%></strong> 
+                </div>
+
+
+                <%
                         }
-                    %>
+                    }
+                %>
                 </div>
                 <div class="col-md-12" style="text-align: center; padding-top: 3%;">
                     <h1>Insertar CSV</h1>

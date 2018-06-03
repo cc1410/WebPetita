@@ -132,11 +132,22 @@
                 <%
                     String status = (String) request.getAttribute("asignatura");
                     if (status != null) {
+                        if (status == "Ya existe la Asignatura") {
                 %>
-                <div class="alert alert-danger">
+                <div class="alert alert-warning" style="text-align: center;">
                     <strong><%=  status%></strong> 
                 </div>
                 <%
+                } else if (status == "Asignatura dada de alta") {
+
+                %>
+                <div class="alert alert-success" style="text-align: center;">
+                    <strong><%=  status%></strong> 
+                </div>
+
+
+                <%
+                        }
                     }
                 %>
 

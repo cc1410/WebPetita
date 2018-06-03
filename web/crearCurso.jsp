@@ -126,14 +126,25 @@
                     </fieldset>
                 </form>
 
-                <%
+               <%
                     String status = (String) request.getAttribute("curso");
                     if (status != null) {
+                        if (status == "Ya existe el curso") {
                 %>
-                <div class="alert alert-danger">
+                <div class="alert alert-warning" style="text-align: center;">
                     <strong><%=  status%></strong> 
                 </div>
                 <%
+                } else if (status == "Curso dado de alta") {
+
+                %>
+                <div class="alert alert-success" style="text-align: center;">
+                    <strong><%=  status%></strong> 
+                </div>
+
+
+                <%
+                        }
                     }
                 %>
 

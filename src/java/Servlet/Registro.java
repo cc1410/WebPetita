@@ -88,9 +88,9 @@ public class Registro extends HttpServlet {
                 request.setAttribute("asignatura", ex.getMessage());
             }
             request.getRequestDispatcher("/crearAsignatura.jsp").forward(request, response);
-        } else if ("Insertar Nota".equals(request.getParameter("insertarNota"))) {
+        }// ****************************************************** Insertar nota ******************************************************************************* 
+        else if ("Insertar Nota".equals(request.getParameter("insertarNota"))) {
             String asignatura = request.getParameter("asignatura");
-
             String alumno = request.getParameter("alumno");
             String nombreNota = request.getParameter("nombreNota");
             String comentario = request.getParameter("comentario");
